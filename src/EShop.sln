@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{8F2C0BD0-A516-443A-84A8-EBB546D47546}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{8EA64A04-E837-4E08-8592-71F54743E6FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.Catalog.Api", "Services\Catalog\EShop.Catalog.Api\EShop.Catalog.Api.csproj", "{893479E1-5810-49CE-8AB5-DA51D266D804}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{8E4008F6-6F54-49BF-9C91-0B7299598A78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.BuildingBlocks", "BuildingBlocks\EShop.BuildingBlocks\EShop.BuildingBlocks.csproj", "{3748CACA-7DC8-4CA6-B1BC-42D8B4C65546}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{893479E1-5810-49CE-8AB5-DA51D266D804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893479E1-5810-49CE-8AB5-DA51D266D804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893479E1-5810-49CE-8AB5-DA51D266D804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893479E1-5810-49CE-8AB5-DA51D266D804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3748CACA-7DC8-4CA6-B1BC-42D8B4C65546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3748CACA-7DC8-4CA6-B1BC-42D8B4C65546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3748CACA-7DC8-4CA6-B1BC-42D8B4C65546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3748CACA-7DC8-4CA6-B1BC-42D8B4C65546}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8EA64A04-E837-4E08-8592-71F54743E6FF} = {8F2C0BD0-A516-443A-84A8-EBB546D47546}
+		{893479E1-5810-49CE-8AB5-DA51D266D804} = {8EA64A04-E837-4E08-8592-71F54743E6FF}
+		{3748CACA-7DC8-4CA6-B1BC-42D8B4C65546} = {8E4008F6-6F54-49BF-9C91-0B7299598A78}
+	EndGlobalSection
+EndGlobal
