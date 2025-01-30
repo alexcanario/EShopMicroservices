@@ -22,6 +22,5 @@ internal sealed class CreateProductHandler : ICommandHandler<CreateProductComman
         //TODO
         //Save product entity to database
         //Return CreateProductResult with product id
-        throw new NotImplementedException();
     }
 }
