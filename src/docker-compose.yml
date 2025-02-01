@@ -1,0 +1,6 @@
+services:
+  catalogodb:
+    image: postgres
+
+volumes:
+  postgres_catalog:  
