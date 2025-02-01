@@ -1,0 +1,23 @@
+﻿namespace EShop.Catalog.Api.Products.GetProducts;
+
+//public sealed record GetProductsRequest(int PageSize = 1, int PageNumber = 10); 
+public sealed record GetProductsResponse(IEnumerable<Product> Products);
+
+public sealed class GetProductsEndpoint : ICarterModule
+{
+	public void AddRoutes(IEndpointRouteBuilder app)
+	{
+		app.MapGet("/products", async (ISender sender) =>
+		{
+			var products = await sender.Send(new GetProductsQuery());
+			var response = products.Adapt<GetProductsResponse>();
+			return Results.Ok(response);
+		})
+			.WithName("GetProducts")
+			.WithDescription("Get all products")
+			.WithSummary("Get all products")
+			.Produces<GetProductsResponse>(StatusCodes.Status200OK)
+			.ProducesProblem(StatusCodes.Status404NotFound)
+			.ProducesProblem(StatusCodes.Status400BadRequest);
+	}
+}
