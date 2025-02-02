@@ -1,6 +1,10 @@
 ﻿namespace EShop.Catalog.Api.Products.CreateProduct;
 
-public sealed class CreateProductEndpoint : ICarterModule
+public sealed record CreateProductRequest(string Name, IList<string> Category, string Description, string ImageFile, decimal Price);
+
+public sealed record CreateProductResponse(Guid Id);
+
+public sealed class CreateProductCommandEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {

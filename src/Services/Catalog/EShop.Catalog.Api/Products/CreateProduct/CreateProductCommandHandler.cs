@@ -1,6 +1,9 @@
-﻿
+﻿namespace EShop.Catalog.Api.Products.CreateProduct;
 
-namespace EShop.Catalog.Api.Products.CreateProduct;
+public sealed record CreateProductCommand(string Name, IList<string> Category, string Description, string ImageFile, decimal Price)
+	: ICommand<CreateProductResult>;
+
+public sealed record CreateProductResult(Guid Id);
 
 internal sealed class CreateProductCommandHandler(IDocumentSession Session)
 	: ICommandHandler<CreateProductCommand, CreateProductResult>
