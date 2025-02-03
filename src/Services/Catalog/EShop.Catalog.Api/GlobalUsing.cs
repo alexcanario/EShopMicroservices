@@ -6,3 +6,4 @@ global using Mapster;
 global using Marten;
 global using MediatR;
 global using Microsoft.Extensions.Logging;
+global using FluentValidation;

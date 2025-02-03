@@ -15,6 +15,8 @@ builder.Services.AddMarten(options =>
 })
     .UseLightweightSessions();
 
+builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
