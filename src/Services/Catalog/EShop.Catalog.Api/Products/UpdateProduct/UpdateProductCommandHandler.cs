@@ -1,8 +1,22 @@
 ﻿namespace EShop.Catalog.Api.Products.UpdateProduct;
 
-public sealed record UpdateProductCommand(Guid Id, string Name, string Description, decimal Price, string imageFile, IList<string> Category) 
+public sealed record UpdateProductCommand(Guid Id, string Name, string Description, decimal Price, string ImageFile, IList<string> Category) 
 	: ICommand<UpdateProductResult>;
 public sealed record UpdateProductResult(bool IsSuccess);
+
+public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
+{
+	public UpdateProductCommandValidator()
+	{
+		RuleFor(x => x.Id).NotEmpty().WithMessage("Product Id is required.");
+
+		RuleFor(x => x.Name)
+			.NotEmpty().WithMessage("Name is required.")
+			.Length(3, 150).WithMessage("Name must be between 3 and 150 characters.");
+
+		RuleFor(x => x.Price).GreaterThan(0).WithMessage("Price  must be greater than zero");
+	}
+}
 
 internal class UpdateProductCommandHandler(IDocumentSession Session, ILogger<UpdateProductCommandHandler> Logger) 
 	: ICommandHandler<UpdateProductCommand, UpdateProductResult>
@@ -21,7 +35,7 @@ internal class UpdateProductCommandHandler(IDocumentSession Session, ILogger<Upd
 		product.Name = command.Name;
 		product.Description = command.Description;
 		product.Price = command.Price;
-		product.ImageFile = command.imageFile;
+		product.ImageFile = command.ImageFile;
 		product.Category = command.Category;
 
 		Session.Update(product);
