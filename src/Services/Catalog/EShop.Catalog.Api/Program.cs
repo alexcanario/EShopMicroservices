@@ -1,13 +1,19 @@
+using EShop.BuildingBlocks.Behavior;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+#region Add services to the container.
 
-builder.Services.AddCarter();   
-
+var asembly = typeof(Program).Assembly;
 builder.Services.AddMediatR(config => 
 { 
-    config.RegisterServicesFromAssemblies(typeof(Program).Assembly);
+    config.RegisterServicesFromAssemblies(asembly);
+	config.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
+
+builder.Services.AddValidatorsFromAssembly(asembly);
+
+builder.Services.AddCarter(); 
 
 builder.Services.AddMarten(options =>
 {
@@ -15,12 +21,14 @@ builder.Services.AddMarten(options =>
 })
     .UseLightweightSessions();
 
-builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+#endregion
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+#region Configure the HTTP request pipeline.
 
 app.MapCarter();
+
+#endregion
 
 app.Run();
