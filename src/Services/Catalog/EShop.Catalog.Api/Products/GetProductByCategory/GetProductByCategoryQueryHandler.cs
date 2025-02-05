@@ -16,6 +16,6 @@ internal class GetProductByCategoryQueryHandler(IDocumentSession Session, ILogge
 
 		return products.Any()
 			? new GetProductByCategoryResult(products)
-			: throw new ProductNotFoundException();
+			: throw new ProductNotFoundException(default);
 	}
 }

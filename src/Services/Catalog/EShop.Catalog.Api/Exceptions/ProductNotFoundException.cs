@@ -1,6 +1,8 @@
-﻿namespace EShop.Catalog.Api.Exceptions;
+﻿using EShop.BuildingBlocks.Exceptions;
 
-public sealed class ProductNotFoundException : Exception
+namespace EShop.Catalog.Api.Exceptions;
+
+public sealed class ProductNotFoundException : NotFoundException
 {
-	public ProductNotFoundException():base("Product not found!") {}
+	public ProductNotFoundException(Guid Id) : base("Product", Id) {}
 }

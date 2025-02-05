@@ -13,7 +13,7 @@ public class GetProductByIdQueryHandler(IDocumentSession Session, ILogger<GetPro
 		var product = await Session.LoadAsync<Product>(query.Id, cancellationToken);
 
 		return product is null 
-			? throw new ProductNotFoundException() 
+			? throw new ProductNotFoundException(query.Id) 
 			: new GetProductByIdResult(product);
 	}
 }

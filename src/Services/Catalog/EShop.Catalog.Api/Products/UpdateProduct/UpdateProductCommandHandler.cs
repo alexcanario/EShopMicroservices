@@ -29,7 +29,7 @@ internal class UpdateProductCommandHandler(IDocumentSession Session, ILogger<Upd
 		if(product is null)
 		{
 			Logger.LogWarning("Product with id {Id} was not found", command.Id);
-			throw new ProductNotFoundException();
+			throw new ProductNotFoundException(command.Id);
 		}
 
 		product.Name = command.Name;
