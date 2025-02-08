@@ -7,3 +7,5 @@ global using Marten;
 global using MediatR;
 global using Microsoft.Extensions.Logging;
 global using FluentValidation;
+global using EShop.BuildingBlocks.Behaviors;
+global using EShop.BuildingBlocks.Exceptions.Handler;
