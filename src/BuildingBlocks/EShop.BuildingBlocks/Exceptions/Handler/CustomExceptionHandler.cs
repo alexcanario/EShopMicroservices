@@ -15,7 +15,7 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> Logger) : IE
 		(string Detail, string Title, int StatusCode) details = exception switch
 		{
 			NotFoundException =>
-				(exception.Message, exception.GetType().Name, context.Response.StatusCode = StatusCodes.Status500InternalServerError),
+				(exception.Message, exception.GetType().Name, context.Response.StatusCode = StatusCodes.Status404NotFound),
 			BadRequestException => 
 				(exception.Message, exception.GetType().Name, context.Response.StatusCode = StatusCodes.Status400BadRequest),
 			InternalServerException => 

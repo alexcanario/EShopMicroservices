@@ -1,3 +1,5 @@
+using EShop.Catalog.Api.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region Add services to the container.
@@ -7,6 +9,7 @@ builder.Services.AddMediatR(config =>
 {
 	config.RegisterServicesFromAssemblies(asembly);
 	config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+	config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
 builder.Services.AddValidatorsFromAssembly(asembly);
@@ -18,6 +21,11 @@ builder.Services.AddMarten(options =>
 	options.Connection(builder.Configuration.GetConnectionString("CatalogConnection")!);
 })
 	.UseLightweightSessions();
+
+if(builder.Environment.IsDevelopment())
+{
+	builder.Services.InitializeMartenWith<CatalogSeed>();
+}
 
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();

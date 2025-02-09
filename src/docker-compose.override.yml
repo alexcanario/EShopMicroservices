@@ -1,3 +1,4 @@
+name: EShop.Catalog.API
 services:
   catalogodb:
     container_name: catalogodb
