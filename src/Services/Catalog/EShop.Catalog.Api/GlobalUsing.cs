@@ -9,3 +9,4 @@ global using Microsoft.Extensions.Logging;
 global using FluentValidation;
 global using EShop.BuildingBlocks.Behaviors;
 global using EShop.BuildingBlocks.Exceptions.Handler;
+global using Marten.Pagination;
