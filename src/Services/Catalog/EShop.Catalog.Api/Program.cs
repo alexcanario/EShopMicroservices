@@ -1,4 +1,6 @@
 using EShop.Catalog.Api.Data;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,19 +18,23 @@ builder.Services.AddValidatorsFromAssembly(asembly);
 
 builder.Services.AddCarter();
 
+var sqlCatalogConnectionString = builder.Configuration.GetConnectionString("CatalogConnection")!;
 builder.Services.AddMarten(options =>
 {
-	options.Connection(builder.Configuration.GetConnectionString("CatalogConnection")!);
+	options.Connection(sqlCatalogConnectionString);
 })
 	.UseLightweightSessions();
 
-if(builder.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
 	builder.Services.InitializeMartenWith<CatalogSeed>();
 }
 
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
+builder.Services.AddHealthChecks()
+	.AddNpgSql(sqlCatalogConnectionString);
 
 #endregion
 
@@ -39,6 +45,13 @@ var app = builder.Build();
 app.MapCarter();
 
 app.UseExceptionHandler(options => { });
+
+app.MapGet("/", () => Results.Ok("Hello World!"));
+
+app.UseHealthChecks("/health", new HealthCheckOptions 
+{ 
+	ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse 
+});
 
 #endregion
 
