@@ -3,7 +3,7 @@
 public sealed record GetBasketQuery(string Username) : IQuery<GetBasketResult>;
 public sealed record GetBasketResult(ShoppingCart Cart);
 
-public class GetBasketHandler : IQueryHandler<GetBasketQuery, GetBasketResult>
+public class GetBasketQueryHandler : IQueryHandler<GetBasketQuery, GetBasketResult>
 {
 	public async Task<GetBasketResult> Handle(GetBasketQuery query, CancellationToken cancellationToken)
 	{

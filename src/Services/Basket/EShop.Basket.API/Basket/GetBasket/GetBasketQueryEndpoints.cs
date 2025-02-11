@@ -1,11 +1,9 @@
-﻿using Mapster;
-
-namespace EShop.Basket.API.Basket.GetBasket;
+﻿namespace EShop.Basket.API.Basket.GetBasket;
 
 //public sealed record GetBasketRequest(string Username);
 public sealed record GetBasketResponse(ShoppingCart Cart);
 
-public class GetBasketEndpoints : ICarterModule
+public class GetBasketQueryEndpoints : ICarterModule
 {
 	public void AddRoutes(IEndpointRouteBuilder app)
 	{
