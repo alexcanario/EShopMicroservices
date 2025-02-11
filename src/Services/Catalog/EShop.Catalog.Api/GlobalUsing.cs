@@ -1,12 +1,11 @@
 ﻿global using Carter;
+global using EShop.BuildingBlocks.Behaviors;
 global using EShop.BuildingBlocks.CQRS;
+global using EShop.BuildingBlocks.Exceptions.Handler;
 global using EShop.Catalog.Api.Exceptions;
 global using EShop.Catalog.Api.Models;
+global using FluentValidation;
 global using Mapster;
 global using Marten;
-global using MediatR;
-global using Microsoft.Extensions.Logging;
-global using FluentValidation;
-global using EShop.BuildingBlocks.Behaviors;
-global using EShop.BuildingBlocks.Exceptions.Handler;
 global using Marten.Pagination;
+global using MediatR;
