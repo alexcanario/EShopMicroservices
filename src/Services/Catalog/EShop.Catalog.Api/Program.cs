@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 #region Add services to the container.
 
 var asembly = typeof(Program).Assembly;
+var sqlCatalogConnectionString = builder.Configuration.GetConnectionString("CatalogConnection")!;
+
 builder.Services.AddMediatR(config =>
 {
 	config.RegisterServicesFromAssemblies(asembly);
@@ -18,7 +20,6 @@ builder.Services.AddValidatorsFromAssembly(asembly);
 
 builder.Services.AddCarter();
 
-var sqlCatalogConnectionString = builder.Configuration.GetConnectionString("CatalogConnection")!;
 builder.Services.AddMarten(options =>
 {
 	options.Connection(sqlCatalogConnectionString);
@@ -45,8 +46,6 @@ var app = builder.Build();
 app.MapCarter();
 
 app.UseExceptionHandler(options => { });
-
-app.MapGet("/", () => Results.Ok("Hello World!"));
 
 app.UseHealthChecks("/health", new HealthCheckOptions 
 { 
