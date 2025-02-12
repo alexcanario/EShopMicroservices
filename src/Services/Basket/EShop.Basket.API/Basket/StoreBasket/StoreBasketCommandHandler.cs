@@ -14,9 +14,9 @@ public class StoreBasketValidation: AbstractValidator<StoreBasketCommand>
 }
 public class StoreBasketCommandHandler : ICommandHandler<StoreBasketCommand, StoreBasketResult>
 {
-	public async Task<StoreBasketResult> Handle(StoreBasketCommand request, CancellationToken cancellationToken)
+	public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
 	{
-		var cart = request.Cart;
+		var cart = command.Cart;
 
 		//TODO: Store the cart in the database (using marten upsert support)
 		//TODO: Update cache with the cart

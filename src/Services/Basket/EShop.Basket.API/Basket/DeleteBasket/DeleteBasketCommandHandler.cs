@@ -14,8 +14,11 @@ public class DeleteBasketValidator : AbstractValidator<DeleteBasketCommand>
 
 public class DeleteBasketCommandHandler : ICommandHandler<DeleteBasketCommand, DeleteBasketResult>
 {
-	public Task<DeleteBasketResult> Handle(DeleteBasketCommand request, CancellationToken cancellationToken)
+	public async Task<DeleteBasketResult> Handle(DeleteBasketCommand command, CancellationToken cancellationToken)
 	{
-		throw new NotImplementedException();
+		//TODO: Delete the basket from the database
+		//session.Delete(request.Username);
+
+		return new DeleteBasketResult(true);
 	}
 }

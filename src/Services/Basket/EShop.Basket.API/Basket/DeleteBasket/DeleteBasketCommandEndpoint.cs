@@ -7,7 +7,7 @@ public class DeleteBasketCommandEndpoint : ICarterModule
 {
 	public void AddRoutes(IEndpointRouteBuilder app)
 	{
-		app.MapPost("/basket/{username}", async (string username, ISender sender) => 
+		app.MapDelete("/basket/{username}", async (string username, ISender sender) => 
 		{ 
 			var response = await sender.Send(new DeleteBasketRequest(username));
 			return response.IsDeleted 
@@ -17,8 +17,8 @@ public class DeleteBasketCommandEndpoint : ICarterModule
 			.WithName("DeleteBasket")
 			.WithDescription("Delete a basket")
 			.WithSummary("Delete a basket")
-			.Produces<DeleteBasketResponse>(StatusCodes.Status200OK, "Basket deleted")
-			.ProducesProblem(StatusCodes.Status400BadRequest, "Basket not deleted");
+			.Produces<DeleteBasketResponse>()
+			.ProducesProblem(StatusCodes.Status400BadRequest);
 
 	}
 }

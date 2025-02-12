@@ -1,21 +1,23 @@
 ﻿namespace EShop.Basket.API.Basket.StoreBasket;
 
 public record StoreBasketResponse(bool IsSucess, string Username);
-public record StoreBasketRequest(ShoppingCart Cart) : IRequest<StoreBasketResponse>;
+public record StoreBasketRequest(ShoppingCart Cart);
 
 public class StoreBasketCommandEndpoints : ICarterModule
 {
 	public void AddRoutes(IEndpointRouteBuilder app)
 	{
-		app.MapPost("/basket", async (ShoppingCart cart, ISender sender) =>
+		app.MapPost("/basket", async (StoreBasketRequest request, ISender sender) =>
 		{
-			var response = await sender.Send(new StoreBasketRequest(cart));
+			var command = request.Adapt<StoreBasketCommand>();
+			
+			var response = await sender.Send(command);
 
 			return response.IsSucess
 				? Results.Ok(response.Adapt<StoreBasketResponse>())
 				: Results.BadRequest();
 		})
-			.WithName("GetBasket")
+			.WithName("StoreBasket")
 			.WithDescription("Get the basket for the user")
 			.WithSummary("Get the basket for the user")
 			.Produces<StoreBasketResponse>(StatusCodes.Status200OK)
