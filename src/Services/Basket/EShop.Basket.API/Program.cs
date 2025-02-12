@@ -1,8 +1,11 @@
 using EShop.BuildingBlocks.Behaviors;
+using Weasel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var assembly = typeof(Program).Assembly;
+
+var basketConnectionString = builder.Configuration.GetConnectionString("BasketConnection");
 
 #region Add services to the container.
 
@@ -14,6 +17,14 @@ builder.Services.AddMediatR(config =>
 	config.AddOpenBehavior(typeof(ValidationBehavior<,>));
 	config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
+
+builder.Services.AddMarten(options => 
+{
+	options.Connection(basketConnectionString!);
+	options.AutoCreateSchemaObjects = AutoCreate.All;
+	options.Schema.For<ShoppingCart>().Identity(x => x.Username);
+})
+	.UseLightweightSessions();
 
 #endregion
 

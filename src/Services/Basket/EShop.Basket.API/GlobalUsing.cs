@@ -1,6 +1,8 @@
 ﻿global using Carter;
 global using EShop.Basket.API.Models;
 global using EShop.BuildingBlocks.CQRS;
+global using EShop.BuildingBlocks.Exceptions;
 global using FluentValidation;
-global using MediatR;
 global using Mapster;
+global using Marten;
+global using MediatR;
