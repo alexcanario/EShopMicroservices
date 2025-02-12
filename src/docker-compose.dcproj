@@ -8,6 +8,7 @@
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>eshop.catalog.api</DockerServiceName>
+    <DependencyAwareStart>True</DependencyAwareStart>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

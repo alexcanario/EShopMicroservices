@@ -1,5 +1,8 @@
 services:
-  catalogodb:
+  catalogdb:
+    image: postgres
+
+  basketdb:
     image: postgres
 
   eshop.catalog.api:
@@ -9,5 +12,5 @@ services:
       dockerfile: Services/Catalog/EShop.Catalog.Api/Dockerfile
 
 volumes:
-  postgres_catalog:  
-
+  postgres_catalog:
+  postgres_basket:
