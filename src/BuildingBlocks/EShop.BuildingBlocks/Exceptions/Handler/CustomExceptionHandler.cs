@@ -31,7 +31,7 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> Logger) : IE
 			Title = details.Title,
 			Status = details.StatusCode,
 			Detail = details.Detail,
-			Instance = context.Request.Path
+			Instance = context.Request.Path,
 		};
 
 		problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
@@ -41,7 +41,7 @@ public class CustomExceptionHandler(ILogger<CustomExceptionHandler> Logger) : IE
 			problemDetails.Extensions.Add("ValidationErrors", validationException.Errors);
 		}
 
-		await context.Response.WriteAsJsonAsync(problemDetails);
+		await context.Response.WriteAsJsonAsync(problemDetails, cancellationToken: cancellationToken);
 
 		return true;
 	}

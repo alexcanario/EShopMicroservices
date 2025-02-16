@@ -12,13 +12,13 @@ public class DeleteBasketValidator : AbstractValidator<DeleteBasketCommand>
 	}
 }
 
-public class DeleteBasketCommandHandler : ICommandHandler<DeleteBasketCommand, DeleteBasketResult>
+public class DeleteBasketCommandHandler(IBasketRepository BasketRepository) : ICommandHandler<DeleteBasketCommand, DeleteBasketResult>
 {
 	public async Task<DeleteBasketResult> Handle(DeleteBasketCommand command, CancellationToken cancellationToken)
 	{
 		//TODO: Delete the basket from the database
-		//session.Delete(request.Username);
+		var isDeleted = await BasketRepository.DeleteBasketAsync(command.Username, cancellationToken);
 
-		return new DeleteBasketResult(true);
+		return new DeleteBasketResult(isDeleted);
 	}
 }

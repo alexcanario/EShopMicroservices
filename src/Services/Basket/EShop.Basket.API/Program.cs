@@ -1,4 +1,5 @@
 using EShop.BuildingBlocks.Behaviors;
+using EShop.BuildingBlocks.Exceptions.Handler;
 using Weasel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,20 +12,23 @@ var basketConnectionString = builder.Configuration.GetConnectionString("BasketCo
 
 builder.Services.AddCarter();
 
-builder.Services.AddMediatR(config => 
-{ 
+builder.Services.AddMediatR(config =>
+{
 	config.RegisterServicesFromAssemblies(assembly);
 	config.AddOpenBehavior(typeof(ValidationBehavior<,>));
 	config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
-builder.Services.AddMarten(options => 
+builder.Services.AddMarten(options =>
 {
 	options.Connection(basketConnectionString!);
 	options.AutoCreateSchemaObjects = AutoCreate.All;
 	options.Schema.For<ShoppingCart>().Identity(x => x.Username);
 })
 	.UseLightweightSessions();
+
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 #endregion
 
@@ -33,6 +37,7 @@ var app = builder.Build();
 #region Configure the HTTP request pipeline.
 
 app.MapCarter();
+app.UseExceptionHandler(options => { });
 
 #endregion
 

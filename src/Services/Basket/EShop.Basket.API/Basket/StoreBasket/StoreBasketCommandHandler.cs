@@ -12,15 +12,18 @@ public class StoreBasketValidation: AbstractValidator<StoreBasketCommand>
 		RuleFor(x => x.Cart.Items).Must(x => x.Count > 0).WithMessage("Cart should have at least one item");
 	}
 }
-public class StoreBasketCommandHandler : ICommandHandler<StoreBasketCommand, StoreBasketResult>
+public class StoreBasketCommandHandler(IBasketRepository BasketRepository) : ICommandHandler<StoreBasketCommand, StoreBasketResult>
 {
 	public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
 	{
-		var cart = command.Cart;
-
 		//TODO: Store the cart in the database (using marten upsert support)
+		var storedCart = await BasketRepository.StoreBasketAsync(command.Cart, cancellationToken);
+
 		//TODO: Update cache with the cart
 
-		return new StoreBasketResult(true, "mocked username");
+
+		return storedCart is null 
+			? new StoreBasketResult(false, "Store Basket Error")
+			: new StoreBasketResult(true, storedCart.Username);
 	}
 }

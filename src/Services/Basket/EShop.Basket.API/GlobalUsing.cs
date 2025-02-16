@@ -1,4 +1,6 @@
 ﻿global using Carter;
+global using EShop.Basket.API.Data;
+global using EShop.Basket.API.Exceptions;
 global using EShop.Basket.API.Models;
 global using EShop.BuildingBlocks.CQRS;
 global using EShop.BuildingBlocks.Exceptions;

@@ -1,7 +1,7 @@
 ﻿namespace EShop.Basket.API.Basket.DeleteBasket;
 
-public record DeleteBasketRequest(string Username) : ICommand<DeleteBasketResult>;
 public record DeleteBasketResponse(bool IsDeleted);
+public record DeleteBasketRequest(string Username);
 
 public class DeleteBasketCommandEndpoint : ICarterModule
 {
@@ -9,7 +9,7 @@ public class DeleteBasketCommandEndpoint : ICarterModule
 	{
 		app.MapDelete("/basket/{username}", async (string username, ISender sender) => 
 		{ 
-			var response = await sender.Send(new DeleteBasketRequest(username));
+			var response = await sender.Send(new DeleteBasketCommand(username));
 			return response.IsDeleted 
 			? Results.Ok(new DeleteBasketResponse(response.IsDeleted))
 			: Results.BadRequest();
