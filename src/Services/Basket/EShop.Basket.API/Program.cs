@@ -1,5 +1,10 @@
 using EShop.BuildingBlocks.Behaviors;
 using EShop.BuildingBlocks.Exceptions.Handler;
+
+using HealthChecks.UI.Client;
+
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+
 using Weasel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +41,9 @@ builder.Services.AddStackExchangeRedisCache(options =>
 });
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+builder.Services.AddHealthChecks()
+	.AddNpgSql(builder.Configuration.GetConnectionString("BasketConnection")!)
+	.AddRedis(builder.Configuration.GetConnectionString("RedisConnection")!);
 
 #endregion
 
@@ -45,6 +53,10 @@ var app = builder.Build();
 
 app.MapCarter();
 app.UseExceptionHandler(options => { });
+app.MapHealthChecks("/health", new HealthCheckOptions 
+{ 
+	ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse 
+});
 
 #endregion
 
