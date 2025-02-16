@@ -5,6 +5,9 @@ services:
   basketdb:
     image: postgres
 
+  distributedcache:
+    image: redis
+
   eshop.catalog.api:
     image: ${DOCKER_REGISTRY-}eshopcatalogapi
     build:
