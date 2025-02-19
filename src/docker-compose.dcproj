@@ -7,7 +7,8 @@
     <ProjectGuid>ca075e35-c816-46e8-b49d-e089d36857cf</ProjectGuid>
     <DockerLaunchAction>None</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>eshop.catalog.api</DockerServiceName>
+    <DockerServiceName>eshop.basket.api</DockerServiceName>
+    <DockerComposeProjectName>eshop</DockerComposeProjectName>
     <DependencyAwareStart>True</DependencyAwareStart>
   </PropertyGroup>
   <ItemGroup>
