@@ -1,6 +1,6 @@
 ﻿namespace EShop.Discount.Grpc.Models;
 
-public class Cupoun
+public class Coupoun
 {
 	public int Id { get; set; }
 	public string ProductName { get; set; } = default!;
