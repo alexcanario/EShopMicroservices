@@ -14,7 +14,6 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Services/Basket/EShop.Basket.API/EShop.Basket.API.csproj", "Services/Basket/EShop.Basket.API/"]
 COPY ["BuildingBlocks/EShop.BuildingBlocks/EShop.BuildingBlocks.csproj", "BuildingBlocks/EShop.BuildingBlocks/"]
-COPY ["Services/Discount/EShop.Discount.Grpc/EShop.Discount.Grpc.csproj", "Services/Discount/EShop.Discount.Grpc/"]
 RUN dotnet restore "./Services/Basket/EShop.Basket.API/EShop.Basket.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Basket/EShop.Basket.API"

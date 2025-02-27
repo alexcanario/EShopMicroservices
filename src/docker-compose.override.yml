@@ -31,6 +31,7 @@ services:
       - 6379:6379
       
   eshop.catalog.api:
+    container_name: eshop.catalog.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
@@ -46,15 +47,18 @@ services:
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
 
   eshop.basket.api:
+    container_name: eshop.basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__BasketConnection=Server=basketdb; Database=BasketDb; Port=5432; User Id=postgres; Password=postgres; Include Error Detail=true
-      - ConnectionStrings__RedisConnection=distributedcache:6379 
+      - ConnectionStrings__RedisConnection=distributedcache:6379
+      - GrpcSettings__DiscountUrl=https://eshop.discount.grpc:8081
     depends_on:
       - basketdb
-      - distributedcache   
+      - distributedcache
+      - eshop.discount.grpc
     ports:
       - 6001:8080
       - 6061:8081
@@ -65,6 +69,7 @@ services:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
   eshop.discount.grpc:
+    container_name: eshop.discount.grpc
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080

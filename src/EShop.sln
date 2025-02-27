@@ -18,6 +18,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{4EF6F693-2DE2-457E-98E4-F12B83617E8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.Basket.API", "Services\Basket\EShop.Basket.API\EShop.Basket.API.csproj", "{88ED1527-DB82-4CDF-B3A5-93F2E7FCD639}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A0AD6B3-2D17-4CFE-87A6-475F1F0A70B5} = {4A0AD6B3-2D17-4CFE-87A6-475F1F0A70B5}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject

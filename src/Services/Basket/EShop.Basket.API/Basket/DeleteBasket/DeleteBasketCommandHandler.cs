@@ -16,7 +16,7 @@ public class DeleteBasketCommandHandler(IBasketRepository BasketRepository) : IC
 {
 	public async Task<DeleteBasketResult> Handle(DeleteBasketCommand command, CancellationToken cancellationToken)
 	{
-		//TODO: Delete the basket from the database
+		//DONE: Delete the basket from the database
 		var isDeleted = await BasketRepository.DeleteBasketAsync(command.Username, cancellationToken);
 
 		return new DeleteBasketResult(isDeleted);

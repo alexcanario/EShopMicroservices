@@ -14,7 +14,7 @@ public class StoreBasketCommandEndpoints : ICarterModule
 			var response = await sender.Send(command);
 
 			return response.IsSucess
-				? Results.Ok(response.Adapt<StoreBasketResponse>())
+				? Results.Created($"/basket/{response.Username}", response)
 				: Results.BadRequest();
 		})
 			.WithName("StoreBasket")

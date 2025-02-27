@@ -1,5 +1,6 @@
 using EShop.BuildingBlocks.Behaviors;
 using EShop.BuildingBlocks.Exceptions.Handler;
+using EShop.Discount.Grpc;
 
 using HealthChecks.UI.Client;
 
@@ -15,14 +16,8 @@ var basketConnectionString = builder.Configuration.GetConnectionString("BasketCo
 
 #region Add services to the container.
 
-builder.Services.AddCarter();
 
-builder.Services.AddMediatR(config =>
-{
-	config.RegisterServicesFromAssemblies(assembly);
-	config.AddOpenBehavior(typeof(ValidationBehavior<,>));
-	config.AddOpenBehavior(typeof(LoggingBehavior<,>));
-});
+#region Data Services
 
 builder.Services.AddMarten(options =>
 {
@@ -34,16 +29,57 @@ builder.Services.AddMarten(options =>
 
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.Decorate<IBasketRepository, CachedBasketRepository>();
+
 builder.Services.AddStackExchangeRedisCache(options =>
 {
 	options.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
 	//options.InstanceName = "Basket_";
 });
 
+
+#endregion Data Services
+
+#region gRPC Services
+//DONE: Add gRPC services
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opt =>
+{
+	opt.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]!);
+})
+	.ConfigurePrimaryHttpMessageHandler(() =>
+	{
+		var handler = new HttpClientHandler
+		{
+			ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+		};
+
+		return handler;
+	});
+
+#endregion gRPC Services
+
+#region Cross-Cutting Services
+
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddHealthChecks()
 	.AddNpgSql(builder.Configuration.GetConnectionString("BasketConnection")!)
 	.AddRedis(builder.Configuration.GetConnectionString("RedisConnection")!);
+
+#endregion Cross-Cutting Services
+
+builder.Services.AddCarter();
+
+
+#region Cqrs Services
+
+builder.Services.AddMediatR(config =>
+{
+	config.RegisterServicesFromAssemblies(assembly);
+	config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+	config.AddOpenBehavior(typeof(LoggingBehavior<,>));
+});
+
+#endregion Cqrs Services
+
 
 #endregion
 
