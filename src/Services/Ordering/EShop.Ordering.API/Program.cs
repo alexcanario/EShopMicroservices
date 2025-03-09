@@ -1,12 +1,24 @@
+using EShop.Ordering.API;
+using EShop.Ordering.App;
+using EShop.Ordering.Infra;
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region Add services to the container.
-var app = builder.Build();
+//Infra - EF
+//App - MediatR
+//Api - Carter, HealthChecks
 
+builder.Services
+	.AddApiServices()
+	.AddApplicationServices()
+	.AddInfraServices(builder.Configuration);
 #endregion
 
+var app = builder.Build();
 
 #region Configure the HTTP request pipeline.
+app.UseApiServices();
 
 #endregion
 
