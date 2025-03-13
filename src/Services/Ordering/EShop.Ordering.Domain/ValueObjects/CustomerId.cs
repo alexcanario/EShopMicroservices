@@ -6,7 +6,7 @@ public record CustomerId
 	private CustomerId(Guid value) => Value = value;
 
 	public static implicit operator Guid(CustomerId customerId) => customerId.Value;
-	public static implicit operator CustomerId(Guid customerId) => new(customerId);
+	public static implicit operator CustomerId(Guid customerId) => Of(customerId);
 
 	public static CustomerId Of(Guid value) 
 	{
