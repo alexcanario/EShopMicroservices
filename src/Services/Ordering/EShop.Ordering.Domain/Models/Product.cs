@@ -8,6 +8,7 @@ public class Product : Entity<ProductId>
 	public static Product Create(ProductId productId, string name, decimal price)
 	{
 		ArgumentException.ThrowIfNullOrEmpty(name, nameof(name));
+		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price, nameof(price));
 
 		return new Product
 		{

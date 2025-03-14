@@ -29,6 +29,7 @@ public record Payment
 		ArgumentException.ThrowIfNullOrWhiteSpace(cvv, nameof(cvv));
 		ArgumentOutOfRangeException.ThrowIfNotEqual(cvv.Length, DefaultCVVLength, $"CVV length must be {DefaultCVVLength} characters!");
 		ArgumentException.ThrowIfNullOrWhiteSpace(paymentMethod, nameof(paymentMethod));
+
 		return new Payment(cardName, cardNumber, expiration, cvv, paymentMethod);
 	}
 }
