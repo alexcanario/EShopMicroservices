@@ -3,6 +3,7 @@
 public record OrderItemId
 {
 	public Guid Value { get; }
+	
 	private OrderItemId(Guid value) => Value = value;
 
 	public static implicit operator Guid(OrderItemId orderItemId) => orderItemId.Value;

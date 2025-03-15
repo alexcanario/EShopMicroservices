@@ -3,8 +3,11 @@
 public record OrderId
 {
 	public Guid Value { get; }
-
+	
 	private OrderId(Guid value) => Value = value;
+
+	public static implicit operator Guid(OrderId orderId) => orderId.Value;
+	public static implicit operator OrderId(Guid orderId) => new(orderId);
 
 	public static OrderId Of(Guid value)
 	{
@@ -13,7 +16,4 @@ public record OrderId
 
 		return new(value);
 	}
-
-	public static implicit operator Guid(OrderId orderId) => orderId.Value;
-	public static implicit operator OrderId(Guid orderId) => new(orderId);
 }

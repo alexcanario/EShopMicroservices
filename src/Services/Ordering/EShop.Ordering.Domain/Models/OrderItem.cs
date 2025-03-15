@@ -1,6 +1,6 @@
 ﻿namespace EShop.Ordering.Domain.Models;
 
-public class OrderItem : Entity<Guid>
+public class OrderItem : Entity<OrderItemId>
 {
 	internal OrderItem(OrderId orderId, ProductId productId, decimal unitPrice, int quantity)
 	{
@@ -11,8 +11,8 @@ public class OrderItem : Entity<Guid>
 		Quantity = quantity;
 	}
 
-	public OrderId OrderId { get; private set; }
-	public ProductId ProductId { get; private set; }
-	public decimal UnitPrice { get; private set; }
-	public int Quantity { get; private set; }
+	public OrderId OrderId { get; private set; } = default!;
+	public ProductId ProductId { get; private set; } = default!;
+	public int Quantity { get; private set; } = default!;
+	public decimal UnitPrice { get; private set; } = default!;
 }

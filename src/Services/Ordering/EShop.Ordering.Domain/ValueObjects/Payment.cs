@@ -4,11 +4,11 @@ public record Payment
 {
 	private const int DefaultCVVLength = 3;
 
-	public string CardName { get; set; } = string.Empty;
-	public string CardNumber { get; set; } = string.Empty;
-	public string Expiration { get; set; } = string.Empty;
-	public string CVV { get; set; } = string.Empty;
-	public string PaymentMethod { get; set; } = string.Empty;
+	public string CardName { get; } = string.Empty;
+	public string CardNumber { get; } = string.Empty;
+	public string Expiration { get; } = string.Empty;
+	public string CVV { get; } = string.Empty;
+	public string PaymentMethod { get; } = string.Empty;
 
 	protected Payment() { }
 

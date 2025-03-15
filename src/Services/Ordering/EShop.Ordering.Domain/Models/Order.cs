@@ -6,7 +6,7 @@ public class Order : Aggregate<OrderId>
 	public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
 	public CustomerId CustomerId { get; private set; } = default!;
-	public string OrderName { get; private set; } = string.Empty;
+	public OrderName OrderName { get; private set; } = string.Empty;
 	public Address ShippingAddress { get; private set; } = default!;
 	public Address BillingAddress { get; private set; } = default!;
 	public Payment Payment { get; private set; } = default!;
@@ -27,16 +27,39 @@ public class Order : Aggregate<OrderId>
 			Status = status
 		};
 
-		order.AddDomainEvent(new OrderCreatedDomainEvent(order));
+		order.AddDomainEvent(new OrderCreatedEvent(order));
 
 		return order;
 	}
 
-	public void Update(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment)
+	public void Update(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
 	{
 		OrderName = orderName;
 		ShippingAddress = shippingAddress;
 		BillingAddress = billingAddress;
 		Payment = payment;
+		Status = status;
+
+		AddDomainEvent(new OrderUpdatedEvent(this));
+	}
+
+	public void AddOrderItem(ProductId productId, decimal unitPrice, int quantity)
+	{
+		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity, nameof(quantity));
+		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(unitPrice, nameof(unitPrice));
+
+		var orderItem = new OrderItem(Id, productId, unitPrice, quantity);
+
+		_orderItems.Add(orderItem);
+	}
+
+	public void RemoveOrderItem(OrderItemId orderItemId)
+	{
+		ArgumentNullException.ThrowIfNull(orderItemId, $"Item to remove can not be null, {nameof(orderItemId)}");
+		
+		var orderITem = _orderItems.FirstOrDefault(_ => _.Id == orderItemId);
+		ArgumentNullException.ThrowIfNull(orderITem, $"Item to remove not found, {nameof(orderItemId)}");
+
+		_orderItems.Remove(orderITem);
 	}
 }
