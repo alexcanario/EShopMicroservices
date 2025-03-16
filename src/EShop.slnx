@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/BuildingBlocks/">
+    <Project Path="BuildingBlocks/EShop.BuildingBlocks/EShop.BuildingBlocks.csproj" />
+  </Folder>
+  <Folder Name="/Services/" />
+  <Folder Name="/Services/Basket/">
+    <Project Path="Services/Basket/EShop.Basket.API/EShop.Basket.API.csproj">
+      <BuildDependency Project="Services/Discount/EShop.Discount.Grpc/EShop.Discount.Grpc.csproj" />
+    </Project>
+  </Folder>
+  <Folder Name="/Services/Catalog/">
+    <Project Path="Services/Catalog/EShop.Catalog.Api/EShop.Catalog.Api.csproj" />
+  </Folder>
+  <Folder Name="/Services/Discount/">
+    <Project Path="Services/Discount/EShop.Discount.Grpc/EShop.Discount.Grpc.csproj" />
+  </Folder>
+  <Folder Name="/Services/Ordering/">
+    <Project Path="Services/Ordering/EShop.Ordering.API/EShop.Ordering.API.csproj" />
+    <Project Path="Services/Ordering/EShop.Ordering.App/EShop.Ordering.App.csproj" />
+    <Project Path="Services/Ordering/EShop.Ordering.Domain/EShop.Ordering.Domain.csproj" />
+    <Project Path="Services/Ordering/EShop.Ordering.Infra/EShop.Ordering.Infra.csproj" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>
