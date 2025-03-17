@@ -1,5 +1,8 @@
-﻿namespace EShop.Ordering.Domain.ValueObjects;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
+namespace EShop.Ordering.Domain.ValueObjects;
+
+[ComplexType]
 public record Address
 {
 	public string FirstName { get; set; } = string.Empty;

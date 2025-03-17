@@ -2,11 +2,9 @@
 
 using EShop.Ordering.Domain.Models;
 
-using Microsoft.EntityFrameworkCore;
-
 namespace EShop.Ordering.Infra.Data;
 
-public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : DbContext(options)
 {
 	public DbSet<Customer> Customer => Set<Customer>();
 	public DbSet<Product> Products => Set<Product>();
