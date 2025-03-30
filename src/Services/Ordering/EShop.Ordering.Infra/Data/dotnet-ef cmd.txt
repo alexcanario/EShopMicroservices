@@ -1,0 +1,5 @@
+Server=.; Database=EShop.OrderingDb; User Id=sa; Password=C@151867; Encrypt=False; TrustServerCertificate=True; MultipleActiveResultSets=True
+
+
+dotnet-ef migrations add  InitialCreation --output-dir Data/Migrations --project .\Ordering\EShop.Ordering.Infra --startup-project .\Ordering\EShop.Ordering.API
+dotnet-ef database update --project .\Ordering\EShop.Ordering.Infra\ --startup-project .\Ordering\EShop.Ordering.API\

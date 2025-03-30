@@ -5,11 +5,11 @@ public class Order : Aggregate<OrderId>
 	private readonly IList<OrderItem> _orderItems = [];
 	public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-	public CustomerId CustomerId { get; private set; } = default!;
+	public CustomerId CustomerId { get; private set; } = null!;
 	public OrderName OrderName { get; private set; } = string.Empty;
-	public Address ShippingAddress { get; private set; } = default!;
-	public Address BillingAddress { get; private set; } = default!;
-	public Payment Payment { get; private set; } = default!;
+	public Address ShippingAddress { get; private set; } = null!;
+	public Address BillingAddress { get; private set; } = null!;
+	public Payment Payment { get; private set; } = null!;
 	public OrderStatus Status { get; private set; } = OrderStatus.Pending;
 	public decimal TotalPrice
 	{
@@ -18,7 +18,7 @@ public class Order : Aggregate<OrderId>
 	}
 
 	public static Order Create(OrderId orderId, CustomerId customerId, OrderName orderName, 
-		Address shippingAddress, Address billingAddres, Payment payment, OrderStatus status)
+		Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
 	{
 		var order = new Order
 		{
@@ -26,7 +26,7 @@ public class Order : Aggregate<OrderId>
 			CustomerId = customerId,
 			OrderName = orderName,
 			ShippingAddress = shippingAddress,
-			BillingAddress = billingAddres,
+			BillingAddress = billingAddress,
 			Payment = payment,
 			Status = status
 		};

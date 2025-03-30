@@ -17,5 +17,6 @@
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="Services\Ordering\EShop.Ordering.Infra\Data\OrderingDbContextFactory.cs" />
   </ItemGroup>
 </Project>

@@ -13,8 +13,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EShop.Ordering.Infra.Data.Migrations
 {
     [DbContext(typeof(OrderingDbContext))]
-    [Migration("20250317175217_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250330134649_InitialCreation")]
+    partial class InitialCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -90,6 +90,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasDefaultValue("Draft");
 
                     b.Property<decimal>("TotalPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.ComplexProperty<Dictionary<string, object>>("BillingAddress", "EShop.Ordering.Domain.Models.Order.BillingAddress#Address", b1 =>
@@ -250,6 +251,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

@@ -4,8 +4,13 @@ using EShop.Ordering.Domain.Models;
 
 namespace EShop.Ordering.Infra.Data;
 
-public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : DbContext(options)
+public class OrderingDbContext : DbContext
 {
+	public OrderingDbContext(DbContextOptions<OrderingDbContext> options) : base(options)
+	{
+		
+	}
+
 	public DbSet<Customer> Customer => Set<Customer>();
 	public DbSet<Product> Products => Set<Product>();
 	public DbSet<Order> Orders => Set<Order>();

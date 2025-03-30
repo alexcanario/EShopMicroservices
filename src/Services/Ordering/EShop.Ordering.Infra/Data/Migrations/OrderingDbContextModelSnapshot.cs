@@ -87,6 +87,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasDefaultValue("Draft");
 
                     b.Property<decimal>("TotalPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.ComplexProperty<Dictionary<string, object>>("BillingAddress", "EShop.Ordering.Domain.Models.Order.BillingAddress#Address", b1 =>
@@ -247,6 +248,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

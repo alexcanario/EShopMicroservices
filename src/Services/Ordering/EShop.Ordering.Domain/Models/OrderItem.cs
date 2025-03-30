@@ -11,8 +11,8 @@ public class OrderItem : Entity<OrderItemId>
 		Quantity = quantity;
 	}
 
-	public OrderId OrderId { get; private set; } = default!;
-	public ProductId ProductId { get; private set; } = default!;
-	public int Quantity { get; private set; } = default!;
-	public decimal UnitPrice { get; private set; } = default!;
+	public OrderId OrderId { get; private set; }
+	public ProductId ProductId { get; private set; }
+	public int Quantity { get; private set; } = 0;
+	public decimal UnitPrice { get; private set; } = 0M;
 }

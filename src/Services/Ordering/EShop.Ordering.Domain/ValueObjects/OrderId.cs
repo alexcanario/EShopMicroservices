@@ -14,6 +14,6 @@ public record OrderId
 		if(value == Guid.Empty)
 			throw new DomainException("Order id, cannot be empty!");
 
-		return new(value);
+		return new OrderId(value);
 	}
 }

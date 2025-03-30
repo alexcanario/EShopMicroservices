@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\OrderingDbContextFactory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\OrderingDbContextFactory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EShop.Ordering.App\EShop.Ordering.App.csproj" />
   </ItemGroup>
 
@@ -15,7 +23,7 @@
 
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
+      <PrivateAssets>none</PrivateAssets>
     </PackageReference>
 
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.3">

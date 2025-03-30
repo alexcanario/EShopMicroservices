@@ -54,6 +54,6 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 		builder.Property(o => o.Status).HasDefaultValue(OrderStatus.Draft)
 			.HasConversion(s => s.ToString(), dbStatus => Enum.Parse<OrderStatus>(dbStatus));
 
-		builder.Property(o => o.TotalPrice);
+		builder.Property(o => o.TotalPrice).HasPrecision(18, 2);
 	}
 }
