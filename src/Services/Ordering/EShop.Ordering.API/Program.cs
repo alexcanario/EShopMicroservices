@@ -2,7 +2,7 @@ using EShop.Ordering.API;
 using EShop.Ordering.App;
 using EShop.Ordering.Infra;
 using EShop.Ordering.Infra.Data;
-
+using EShop.Ordering.Infra.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,9 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 //Infra - EF
 //App - MediatR
 //Api - Carter, HealthChecks
-
-//builder.Services.AddDbContext<OrderingDbContext>(options =>
-//	options.UseSqlServer(builder.Configuration.GetConnectionString("OrderingConnection")));
 
 builder.Services
 	.AddApiServices()
@@ -27,5 +24,10 @@ var app = builder.Build();
 app.UseApiServices();
 
 #endregion
+
+if (app.Environment.IsDevelopment())
+{
+    await app.InitialiseDatabaseAsync();
+}
 
 app.Run();
