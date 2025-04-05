@@ -1,9 +1,7 @@
 using EShop.Ordering.API;
 using EShop.Ordering.App;
 using EShop.Ordering.Infra;
-using EShop.Ordering.Infra.Data;
 using EShop.Ordering.Infra.Data.Extensions;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

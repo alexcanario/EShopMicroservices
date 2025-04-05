@@ -1,16 +1,11 @@
-﻿using System.Reflection;
+﻿using EShop.Ordering.Infra.Data.Configurations;
 
-using EShop.Ordering.Domain.Models;
+using System.Reflection;
 
 namespace EShop.Ordering.Infra.Data;
 
-public class OrderingDbContext : DbContext
+public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : DbContext(options)
 {
-	public OrderingDbContext(DbContextOptions<OrderingDbContext> options) : base(options)
-	{
-		
-	}
-
 	public DbSet<Customer> Customer => Set<Customer>();
 	public DbSet<Product> Products => Set<Product>();
 	public DbSet<Order> Orders => Set<Order>();
@@ -19,6 +14,11 @@ public class OrderingDbContext : DbContext
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+		modelBuilder.ApplyConfiguration(new EntityConfiguration<Customer, CustomerId>());
+		modelBuilder.ApplyConfiguration(new EntityConfiguration<Product, ProductId>());
+		modelBuilder.ApplyConfiguration(new EntityConfiguration<Order, OrderId>());
+		modelBuilder.ApplyConfiguration(new EntityConfiguration<OrderItem, OrderItemId>());
 
 		base.OnModelCreating(modelBuilder);
 	}

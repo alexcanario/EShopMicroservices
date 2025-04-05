@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace EShop.Ordering.Infra.Data.Migrations
+namespace EShop.Ordering.Infra.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreation : Migration
@@ -11,47 +10,44 @@ namespace EShop.Ordering.Infra.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Customer",
+            migrationBuilder.CreateTable(name: "Customer",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Customer", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Products",
+            migrationBuilder.CreateTable(name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Orders",
+            migrationBuilder.CreateTable(name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false, defaultValue: "Draft"),
+                    Status = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false, defaultValue: "Draft"),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     BillingAddress_AddressLine = table.Column<string>(type: "nvarchar(180)", maxLength: 180, nullable: false),
                     BillingAddress_Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -65,7 +61,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                     Payment_CardName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Payment_CardNumber = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     Payment_Expiration = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    Payment_PaymentMethod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Payment_PaymentMethod = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ShippingAddress_AddressLine = table.Column<string>(type: "nvarchar(180)", maxLength: 180, nullable: false),
                     ShippingAddress_Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ShippingAddress_EmailAddress = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -74,9 +70,9 @@ namespace EShop.Ordering.Infra.Data.Migrations
                     ShippingAddress_State = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ShippingAddress_ZipCode = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -89,8 +85,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "OrderItems",
+            migrationBuilder.CreateTable(name: "OrderItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -100,9 +95,9 @@ namespace EShop.Ordering.Infra.Data.Migrations
                     UnitPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     OrderId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -126,29 +121,24 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Customer_Email",
+            migrationBuilder.CreateIndex(name: "IX_Customer_Email",
                 table: "Customer",
                 column: "Email",
                 unique: true);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId",
+            migrationBuilder.CreateIndex(name: "IX_OrderItems_OrderId",
                 table: "OrderItems",
                 column: "OrderId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId1",
+            migrationBuilder.CreateIndex(name: "IX_OrderItems_OrderId1",
                 table: "OrderItems",
                 column: "OrderId1");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_ProductId",
+            migrationBuilder.CreateIndex(name: "IX_OrderItems_ProductId",
                 table: "OrderItems",
                 column: "ProductId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerId",
+            migrationBuilder.CreateIndex(name: "IX_Orders_CustomerId",
                 table: "Orders",
                 column: "CustomerId");
         }
@@ -156,17 +146,13 @@ namespace EShop.Ordering.Infra.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "OrderItems");
+            migrationBuilder.DropTable(name: "OrderItems");
 
-            migrationBuilder.DropTable(
-                name: "Orders");
+            migrationBuilder.DropTable(name: "Orders");
 
-            migrationBuilder.DropTable(
-                name: "Products");
+            migrationBuilder.DropTable(name: "Products");
 
-            migrationBuilder.DropTable(
-                name: "Customer");
+            migrationBuilder.DropTable(name: "Customer");
         }
     }
 }
