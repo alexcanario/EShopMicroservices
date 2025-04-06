@@ -21,5 +21,7 @@ public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : Db
 		modelBuilder.ApplyConfiguration(new EntityConfiguration<OrderItem, OrderItemId>());
 
 		base.OnModelCreating(modelBuilder);
+
+		//InitialData.Seed(modelBuilder);
 	}
 }

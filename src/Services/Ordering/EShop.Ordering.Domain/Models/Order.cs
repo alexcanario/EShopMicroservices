@@ -18,7 +18,7 @@ public class Order : Aggregate<OrderId>
 	}
 
 	public static Order Create(OrderId orderId, CustomerId customerId, OrderName orderName, 
-		Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
+		Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status = OrderStatus.Pending)
 	{
 		var order = new Order
 		{
@@ -47,7 +47,7 @@ public class Order : Aggregate<OrderId>
 		AddDomainEvent(new OrderUpdatedEvent(this));
 	}
 
-	public void AddOrderItem(ProductId productId, decimal unitPrice, int quantity)
+	public void AddOrderItem(ProductId productId, int quantity, decimal unitPrice)
 	{
 		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity, nameof(quantity));
 		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(unitPrice, nameof(unitPrice));

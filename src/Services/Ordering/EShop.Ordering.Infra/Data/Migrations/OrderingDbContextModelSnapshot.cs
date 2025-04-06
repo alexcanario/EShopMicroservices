@@ -5,19 +5,16 @@ using EShop.Ordering.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace EShop.Ordering.Infra.Migrations
+namespace EShop.Ordering.Infra.Data.Migrations
 {
     [DbContext(typeof(OrderingDbContext))]
-    [Migration("20250405165401_Initial-Creation")]
-    partial class InitialCreation
+    partial class OrderingDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

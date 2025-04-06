@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace EShop.Ordering.Infra.Migrations
+namespace EShop.Ordering.Infra.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreation : Migration
@@ -10,7 +11,8 @@ namespace EShop.Ordering.Infra.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(name: "Customer",
+            migrationBuilder.CreateTable(
+                name: "Customer",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -26,7 +28,8 @@ namespace EShop.Ordering.Infra.Migrations
                     table.PrimaryKey("PK_Customer", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(name: "Products",
+            migrationBuilder.CreateTable(
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -42,7 +45,8 @@ namespace EShop.Ordering.Infra.Migrations
                     table.PrimaryKey("PK_Products", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(name: "Orders",
+            migrationBuilder.CreateTable(
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -85,7 +89,8 @@ namespace EShop.Ordering.Infra.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(name: "OrderItems",
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -121,24 +126,29 @@ namespace EShop.Ordering.Infra.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(name: "IX_Customer_Email",
+            migrationBuilder.CreateIndex(
+                name: "IX_Customer_Email",
                 table: "Customer",
                 column: "Email",
                 unique: true);
 
-            migrationBuilder.CreateIndex(name: "IX_OrderItems_OrderId",
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId",
                 table: "OrderItems",
                 column: "OrderId");
 
-            migrationBuilder.CreateIndex(name: "IX_OrderItems_OrderId1",
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderId1",
                 table: "OrderItems",
                 column: "OrderId1");
 
-            migrationBuilder.CreateIndex(name: "IX_OrderItems_ProductId",
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ProductId",
                 table: "OrderItems",
                 column: "ProductId");
 
-            migrationBuilder.CreateIndex(name: "IX_Orders_CustomerId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_CustomerId",
                 table: "Orders",
                 column: "CustomerId");
         }
@@ -146,13 +156,17 @@ namespace EShop.Ordering.Infra.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(name: "OrderItems");
+            migrationBuilder.DropTable(
+                name: "OrderItems");
 
-            migrationBuilder.DropTable(name: "Orders");
+            migrationBuilder.DropTable(
+                name: "Orders");
 
-            migrationBuilder.DropTable(name: "Products");
+            migrationBuilder.DropTable(
+                name: "Products");
 
-            migrationBuilder.DropTable(name: "Customer");
+            migrationBuilder.DropTable(
+                name: "Customer");
         }
     }
 }
