@@ -32,7 +32,7 @@ internal class InitialData
 			var order1 = Order.Create(
 				OrderId.Of(new Guid("A4D3E5F2-0C8B-4E7A-8F6C-9D3B5F1A2E7D")),
 				CustomerId.Of(new Guid("B8490294-9306-4317-A0FF-C2C4BCEBA3CE")),
-				OrderName.Of("Order 1"),
+				OrderName.Of("Order"),
 				shippingAddress: address1,
 				billingAddress: address1,
 				payment1);
@@ -44,9 +44,9 @@ internal class InitialData
 			#region Order2 Creation
 
 			var order2 = Order.Create(
-				OrderId.Of(new Guid("A4D3E5F2-0C8B-4E7A-8F6C-9D3B5F1A2E7D")),
+				OrderId.Of(new Guid("0E70C53B-9012-4265-AEA2-E9D65AE1F8A0")),
 				CustomerId.Of(new Guid("9E0F8206-9E29-47EB-B308-FCD54DD929DE")),
-				OrderName.Of("Order 2"),
+				OrderName.Of("Order"),
 				shippingAddress: address2,
 				billingAddress: address2,
 				payment2);

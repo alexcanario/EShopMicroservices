@@ -15,4 +15,6 @@ public class OrderItem : Entity<OrderItemId>
 	public ProductId ProductId { get; private set; }
 	public int Quantity { get; private set; } = 0;
 	public decimal UnitPrice { get; private set; } = 0M;
+
+	public virtual Order? Order { get; private set; }
 }

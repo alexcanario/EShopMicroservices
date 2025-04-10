@@ -11,7 +11,7 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 		builder.Property(o => o.Id).HasConversion(id => id.Value, dbId => OrderId.Of(dbId));
 
 		builder.HasOne<Customer>().WithMany().HasForeignKey(o => o.CustomerId).IsRequired();
-		builder.HasMany<OrderItem>().WithOne().HasForeignKey(oi => oi.OrderId).IsRequired();
+		builder.HasMany(o => o.OrderItems).WithOne(oi => oi.Order).HasForeignKey(oi => oi.OrderId).IsRequired();
 
 		builder.ComplexProperty(o => o.OrderName, nameBuilder =>
 			nameBuilder.Property(n => n.Value).HasColumnName(nameof(Order.OrderName)).HasMaxLength(100).IsRequired());
@@ -49,8 +49,8 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 
 		builder.Property(o => o.Status)
 			.HasDefaultValue(OrderStatus.Draft)
-			.HasMaxLength(2)
-			.HasConversion(s => s.ToString(), dbStatus => Enum.Parse<OrderStatus>(dbStatus));
+			.HasMaxLength(50)
+			.HasConversion(s => s.ToString(), dbStatus => (OrderStatus)Enum.Parse(typeof(OrderStatus), dbStatus));
 
 		builder.Property(o => o.TotalPrice).HasPrecision(18, 2);
 	}

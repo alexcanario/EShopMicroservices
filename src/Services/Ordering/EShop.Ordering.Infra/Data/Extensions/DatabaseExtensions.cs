@@ -8,8 +8,11 @@ public static class DatabaseExtensions
 	public static async Task InitialiseDatabaseAsync(this WebApplication app)
 	{
 		using var scope = app.Services.CreateScope();
-		var context = scope.ServiceProvider.GetRequiredService<OrderingDbContext>();
-		await context.Database.MigrateAsync();
+		var context = scope.ServiceProvider.GetRequiredService<OrderingDbContext>();									//961 001 620
+		
+		var pendingMigrations = await context.Database.GetPendingMigrationsAsync();
+		if (pendingMigrations.Any())
+			await context.Database.MigrateAsync();
 
 		await SeedDataAsync(context);
 	}

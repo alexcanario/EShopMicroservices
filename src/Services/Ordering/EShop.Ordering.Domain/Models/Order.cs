@@ -6,7 +6,7 @@ public class Order : Aggregate<OrderId>
 	public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
 	public CustomerId CustomerId { get; private set; } = null!;
-	public OrderName OrderName { get; private set; } = string.Empty;
+	public OrderName OrderName { get; private set; } = null!;
 	public Address ShippingAddress { get; private set; } = null!;
 	public Address BillingAddress { get; private set; } = null!;
 	public Payment Payment { get; private set; } = null!;

@@ -11,7 +11,8 @@ public class EntityConfiguration<TEntity, TKey> : IEntityTypeConfiguration<TEnti
 		builder.HasKey(e => e.Id);
 
 		builder.Property(e => e.CreatedAt)
-			.IsRequired(false);
+			.IsRequired(false)
+			.HasDefaultValueSql("GETDATE()");
 
 		builder.Property(e => e.CreatedBy)
 			.IsRequired()

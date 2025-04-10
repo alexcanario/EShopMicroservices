@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EShop.Ordering.Infra.Data.Migrations
 {
     [DbContext(typeof(OrderingDbContext))]
-    [Migration("20250406072300_Initial-Creation")]
+    [Migration("20250406124156_Initial-Creation")]
     partial class InitialCreation
     {
         /// <inheritdoc />
@@ -32,7 +32,9 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -70,7 +72,9 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -90,8 +94,8 @@ namespace EShop.Ordering.Infra.Data.Migrations
                     b.Property<string>("Status")
                         .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasDefaultValue("Draft");
 
                     b.Property<decimal>("TotalPrice")
@@ -232,7 +236,9 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -249,9 +255,6 @@ namespace EShop.Ordering.Infra.Data.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("OrderId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
@@ -266,8 +269,6 @@ namespace EShop.Ordering.Infra.Data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("OrderId1");
-
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
@@ -279,7 +280,9 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -317,21 +320,19 @@ namespace EShop.Ordering.Infra.Data.Migrations
 
             modelBuilder.Entity("EShop.Ordering.Domain.Models.OrderItem", b =>
                 {
-                    b.HasOne("EShop.Ordering.Domain.Models.Order", null)
-                        .WithMany()
+                    b.HasOne("EShop.Ordering.Domain.Models.Order", "Order")
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("EShop.Ordering.Domain.Models.Order", null)
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId1");
 
                     b.HasOne("EShop.Ordering.Domain.Models.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("EShop.Ordering.Domain.Models.Order", b =>
