@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace EShop.Ordering.Infra.Data.Extensions;
 
-public static class DatabaseExtensions
+public static class SeedExtensions
 {
 	public static async Task InitialiseDatabaseAsync(this WebApplication app)
 	{
