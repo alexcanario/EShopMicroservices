@@ -15,4 +15,11 @@
     <ProjectReference Include="..\EShop.Ordering.Domain\EShop.Ordering.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\" />
+    <Folder Include="Orders\Commands\" />
+    <Folder Include="Orders\EventHandlers\" />
+    <Folder Include="Orders\Queries\" />
+  </ItemGroup>
+
 </Project>
