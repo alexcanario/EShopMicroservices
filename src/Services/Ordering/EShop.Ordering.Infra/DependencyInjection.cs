@@ -9,10 +9,14 @@ public static class DependencyInjection
 	public static IServiceCollection AddInfraServices(this IServiceCollection services, IConfiguration configuration)
 	{
         var orderingConnStr = configuration.GetConnectionString("OrderingConnection");
-        services.AddDbContext<OrderingDbContext>((sp, opt) =>
+
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+		services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+
+		services.AddDbContext<OrderingDbContext>((sp, opt) =>
         {
-            opt.AddInterceptors((sp.GetServices<ISaveChangesInterceptor>()));
-            opt.UseSqlServer(orderingConnStr);
+            opt.AddInterceptors(sp.GetService<ISaveChangesInterceptor>()!);
+			opt.UseSqlServer(orderingConnStr);
         });
 
         return services;

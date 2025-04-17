@@ -1,6 +1,4 @@
-﻿using EShop.Ordering.Infra.Data.Configurations;
-
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace EShop.Ordering.Infra.Data;
 
@@ -15,10 +13,10 @@ public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : Db
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-		modelBuilder.ApplyConfiguration(new EntityConfiguration<Customer, CustomerId>());
-		modelBuilder.ApplyConfiguration(new EntityConfiguration<Product, ProductId>());
-		modelBuilder.ApplyConfiguration(new EntityConfiguration<Order, OrderId>());
-		modelBuilder.ApplyConfiguration(new EntityConfiguration<OrderItem, OrderItemId>());
+		//modelBuilder.ApplyConfiguration(new EntityConfiguration<Customer, CustomerId>());
+		//modelBuilder.ApplyConfiguration(new EntityConfiguration<Product, ProductId>());
+		//modelBuilder.ApplyConfiguration(new EntityConfiguration<Order, OrderId>());
+		//modelBuilder.ApplyConfiguration(new EntityConfiguration<OrderItem, OrderItemId>());
 
 		base.OnModelCreating(modelBuilder);
 
