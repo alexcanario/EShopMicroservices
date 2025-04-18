@@ -1,11 +1,13 @@
-﻿using System.Reflection;
+﻿using EShop.Ordering.App.Data;
+
+using System.Reflection;
 
 namespace EShop.Ordering.Infra.Data;
 
-public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : DbContext(options)
+public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : DbContext(options), IOrderingDbContext
 {
-	public DbSet<Customer> Customer => Set<Customer>();
 	public DbSet<Product> Products => Set<Product>();
+	public DbSet<Customer> Customers => Set<Customer>();
 	public DbSet<Order> Orders => Set<Order>();
 	public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 

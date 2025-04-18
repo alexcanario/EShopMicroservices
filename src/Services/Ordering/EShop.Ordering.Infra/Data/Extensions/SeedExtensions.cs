@@ -27,9 +27,9 @@ public static class SeedExtensions
 
 	private static async Task SeedCustomerAsync(OrderingDbContext context)
 	{
-		if (!await context.Customer.AnyAsync())
+		if (!await context.Customers.AnyAsync())
 		{
-			await context.Customer.AddRangeAsync(InitialData.Customers);
+			await context.Customers.AddRangeAsync(InitialData.Customers);
 			await context.SaveChangesAsync();
 		}
 	}

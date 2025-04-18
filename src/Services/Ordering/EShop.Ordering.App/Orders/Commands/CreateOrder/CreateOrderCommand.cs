@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
+﻿namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
 
 public record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
 

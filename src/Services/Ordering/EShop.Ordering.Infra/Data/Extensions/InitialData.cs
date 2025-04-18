@@ -37,8 +37,8 @@ internal class InitialData
 				billingAddress: address1,
 				payment1);
 
-			order1.AddOrderItem(ProductId.Of(new Guid("51BA242A-39A2-433C-87F1-29FF7FAE3D45")), 1, 1100M);
-			order1.AddOrderItem(ProductId.Of(new Guid("776CA130-C994-496B-949D-1AB660B907EF")), 2, 1200M);
+			order1.AddItem(ProductId.Of(new Guid("51BA242A-39A2-433C-87F1-29FF7FAE3D45")), 1, 1100M);
+			order1.AddItem(ProductId.Of(new Guid("776CA130-C994-496B-949D-1AB660B907EF")), 2, 1200M);
 			#endregion Order1 Creation
 
 			#region Order2 Creation
@@ -51,8 +51,8 @@ internal class InitialData
 				billingAddress: address2,
 				payment2);
 
-			order2.AddOrderItem(ProductId.Of(new Guid("B32E9B95-B7BC-4D84-BB0C-2E69F8A988CA")), 1, 1300M);
-			order2.AddOrderItem(ProductId.Of(new Guid("F11A2C4D-D80F-42BD-AFE2-0175104AC99C")), 2, 900M);
+			order2.AddItem(ProductId.Of(new Guid("B32E9B95-B7BC-4D84-BB0C-2E69F8A988CA")), 1, 1300M);
+			order2.AddItem(ProductId.Of(new Guid("F11A2C4D-D80F-42BD-AFE2-0175104AC99C")), 2, 900M);
 			#endregion
 			
 			return new List<Order>

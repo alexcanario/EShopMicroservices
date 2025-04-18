@@ -17,12 +17,12 @@ public class Order : Aggregate<OrderId>
 		private set { }
 	}
 
-	public static Order Create(OrderId orderId, CustomerId customerId, OrderName orderName, 
+	public static Order Create(OrderId id, CustomerId customerId, OrderName orderName, 
 		Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status = OrderStatus.Pending)
 	{
 		var order = new Order
 		{
-			Id = orderId,
+			Id = id,
 			CustomerId = customerId,
 			OrderName = orderName,
 			ShippingAddress = shippingAddress,
@@ -47,7 +47,7 @@ public class Order : Aggregate<OrderId>
 		AddDomainEvent(new OrderUpdatedEvent(this));
 	}
 
-	public void AddOrderItem(ProductId productId, int quantity, decimal unitPrice)
+	public void AddItem(ProductId productId, int quantity, decimal unitPrice)
 	{
 		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity, nameof(quantity));
 		ArgumentOutOfRangeException.ThrowIfNegativeOrZero(unitPrice, nameof(unitPrice));

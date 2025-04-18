@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+﻿using EShop.Ordering.App.Data;
+
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +20,8 @@ public static class DependencyInjection
             opt.AddInterceptors(sp.GetService<ISaveChangesInterceptor>()!);
 			opt.UseSqlServer(orderingConnStr);
         });
+
+		services.AddScoped<IOrderingDbContext, OrderingDbContext>();
 
         return services;
 	}
