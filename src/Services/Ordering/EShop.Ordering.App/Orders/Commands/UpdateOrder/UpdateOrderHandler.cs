@@ -10,13 +10,14 @@ public class UpdateOrderHandler(IOrderingDbContext ctx) : ICommandHandler<Update
 		//return successfully or not
 
 		var orderId = OrderId.Of(command.Order.Id);
-		var oldOrder = await ctx.Orders.FindAsync([orderId], cancellationToken);
-		if (oldOrder is null)
+		
+		var orderToUpdate = await ctx.Orders.FindAsync([orderId], cancellationToken);
+		if (orderToUpdate is null)
 			throw new OrderNotFoundException(command.Order.Id);
 
-		UpdateOrderWithNewValues(oldOrder, command.Order);
+		UpdateOrderWithNewValues(orderToUpdate, command.Order);
 
-		ctx.Orders.Update(oldOrder);
+		ctx.Orders.Update(orderToUpdate);
 		await ctx.SaveChangesAsync(cancellationToken);
 
 		return new UpdateOrderResult(true);

@@ -1,6 +1,4 @@
-﻿using EShop.Ordering.Domain.Models;
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Ordering.App.Data;
 
