@@ -1,10 +1,19 @@
-﻿namespace EShop.Ordering.API;
+﻿using System.Reflection;
+using EShop.BuildingBlocks.Behaviors;
+
+namespace EShop.Ordering.API;
 
 public static class DependencyInjection
 {
 	public static IServiceCollection AddApiServices(this IServiceCollection services)
 	{
 		//services.AddCarter();
+		services.AddMediatR(configuration =>
+		{
+			configuration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+			configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
+			configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+		});
 
 		return services;
 	}
