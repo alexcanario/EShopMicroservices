@@ -146,7 +146,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         {
                             b1.IsRequired();
 
-                            b1.Property<string>("CVV")
+                            b1.Property<string>("Cvv")
                                 .IsRequired()
                                 .HasMaxLength(3)
                                 .HasColumnType("nvarchar(3)");

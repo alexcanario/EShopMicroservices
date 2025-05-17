@@ -1,6 +1,7 @@
 ﻿namespace EShop.Ordering.App.Orders.Commands.UpdateOrder;
 
-public class UpdateOrderHandler(IOrderingDbContext ctx) : ICommandHandler<UpdateOrderCommand, UpdateOrderResult>
+internal sealed class UpdateOrderHandler(IOrderingDbContext ctx) 
+    : ICommandHandler<UpdateOrderCommand, UpdateOrderResult>
 {
 	public async Task<UpdateOrderResult> Handle(UpdateOrderCommand command, CancellationToken cancellationToken)
 	{

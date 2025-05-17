@@ -1,6 +1,7 @@
 ﻿namespace EShop.Ordering.App.Orders.Commands.DeleteOrder;
 
-public class DeleteOrderHandler(IOrderingDbContext ctx) : ICommandHandler<DeleteOrderCommand, DeleteOrderResponse>
+internal sealed class DeleteOrderHandler(IOrderingDbContext ctx) 
+    : ICommandHandler<DeleteOrderCommand, DeleteOrderResponse>
 {
 	public async Task<DeleteOrderResponse> Handle(DeleteOrderCommand command, CancellationToken cancellationToken)
 	{

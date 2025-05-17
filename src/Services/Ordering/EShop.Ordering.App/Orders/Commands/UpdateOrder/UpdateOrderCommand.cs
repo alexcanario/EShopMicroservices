@@ -1,12 +1,10 @@
-﻿using System.Data.SqlTypes;
+﻿namespace EShop.Ordering.App.Orders.Commands.UpdateOrder;
 
-namespace EShop.Ordering.App.Orders.Commands.UpdateOrder;
+public sealed record UpdateOrderCommand(OrderDto Order) : ICommand<UpdateOrderResult>;
 
-public record UpdateOrderCommand(OrderDto Order) : ICommand<UpdateOrderResult>;
+public sealed record UpdateOrderResult(bool Successfully = false);
 
-public record UpdateOrderResult(bool Successfully = false);
-
-public class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand>
+public sealed class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand>
 {
 	public UpdateOrderCommandValidator()
 	{

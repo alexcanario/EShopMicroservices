@@ -1,10 +1,10 @@
 ﻿namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
 
-public record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
+public sealed record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
 
-public record CreateOrderResult(Guid Id);
+public sealed record CreateOrderResult(Guid Id);
 
-public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
+public sealed class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
 {
 	public CreateOrderCommandValidator()
 	{

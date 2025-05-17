@@ -1,6 +1,7 @@
 ﻿namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
 
-public class CreateOrderHandler(IOrderingDbContext context) : ICommandHandler<CreateOrderCommand, CreateOrderResult>
+internal sealed class CreateOrderHandler(IOrderingDbContext context) 
+    : ICommandHandler<CreateOrderCommand, CreateOrderResult>
 {
 	public async Task<CreateOrderResult> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
 	{
