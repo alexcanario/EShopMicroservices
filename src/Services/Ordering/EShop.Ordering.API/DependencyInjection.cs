@@ -1,27 +1,28 @@
-﻿using System.Reflection;
-using EShop.BuildingBlocks.Behaviors;
+﻿using EShop.BuildingBlocks.Behaviors;
+
+using System.Reflection;
 
 namespace EShop.Ordering.API;
 
 public static class DependencyInjection
 {
-	public static IServiceCollection AddApiServices(this IServiceCollection services)
-	{
-		//services.AddCarter();
-		services.AddMediatR(configuration =>
-		{
-			configuration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
-			configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
-			configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
-		});
+    public static IServiceCollection AddApiServices(this IServiceCollection services)
+    {
+        //services.AddCarter();
+        services.AddMediatR(configuration =>
+        {
+            configuration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+            configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
+            configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+        });
 
-		return services;
-	}
+        return services;
+    }
 
-	public static WebApplication UseApiServices(this WebApplication app)
-	{
-		//app.MapCarter();
-		
-		return app;
-	}
+    public static WebApplication UseApiServices(this WebApplication app)
+    {
+        //app.MapCarter();
+
+        return app;
+    }
 }
