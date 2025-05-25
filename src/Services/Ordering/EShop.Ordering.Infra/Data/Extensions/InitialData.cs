@@ -24,8 +24,8 @@ internal class InitialData
 		{
 			var address1 = Address.Of("alex", "canario", "alexcanario@gmail.com", "rua tilias, 40", "portugal", "se", "2855-268");
 			var address2 = Address.Of("fernanda", "canario", "alexcanario@gmail.com", "rua tilias, 40", "portugal", "se", "2855-268");
-			var payment1 = Payment.Of("will", "1111222233334444", "03/32", "133", "credit");
-			var payment2 = Payment.Of("nbank", "222233334444555", "03/35", "128", "credit");
+			var payment1 = Payment.Of("will", "1111222233334444", "03/32", "133", 1);
+			var payment2 = Payment.Of("millenium", "222233334444555", "03/35", "128", 1);
 
 			#region Order1 Creation
 
