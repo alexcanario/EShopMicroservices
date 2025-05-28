@@ -6,10 +6,6 @@ using EShop.Ordering.Infra.Data.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 #region Add services to the container.
-//Infra - EF
-//App - MediatR
-//Api - Carter, HealthChecks
-
 builder.Services
 	.AddApiServices()
 	.AddApplicationServices()
