@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace EShop.Ordering.Infra.Data.Migrations
+namespace EShop.Ordering.Infra.Database.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreation : Migration
@@ -12,7 +12,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Customer",
+                name: "Customers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -25,7 +25,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customer", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,11 +61,11 @@ namespace EShop.Ordering.Infra.Data.Migrations
                     BillingAddress_State = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     BillingAddress_ZipCode = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     OrderName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Payment_CVV = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
                     Payment_CardName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Payment_CardNumber = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    Payment_Cvv = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
                     Payment_Expiration = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    Payment_PaymentMethod = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Payment_PaymentMethod = table.Column<int>(type: "int", maxLength: 50, nullable: false),
                     ShippingAddress_AddressLine = table.Column<string>(type: "nvarchar(180)", maxLength: 180, nullable: false),
                     ShippingAddress_Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ShippingAddress_EmailAddress = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -82,9 +82,9 @@ namespace EShop.Ordering.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Customer_CustomerId",
+                        name: "FK_Orders_Customers_CustomerId",
                         column: x => x.CustomerId,
-                        principalTable: "Customer",
+                        principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -121,8 +121,8 @@ namespace EShop.Ordering.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customer_Email",
-                table: "Customer",
+                name: "IX_Customers_Email",
+                table: "Customers",
                 column: "Email",
                 unique: true);
 
@@ -155,7 +155,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Customer");
+                name: "Customers");
         }
     }
 }

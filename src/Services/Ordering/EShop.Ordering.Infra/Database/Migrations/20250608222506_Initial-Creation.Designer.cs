@@ -10,10 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace EShop.Ordering.Infra.Data.Migrations
+namespace EShop.Ordering.Infra.Database.Migrations
 {
     [DbContext(typeof(OrderingDbContext))]
-    [Migration("20250415193600_Initial-Creation")]
+    [Migration("20250608222506_Initial-Creation")]
     partial class InitialCreation
     {
         /// <inheritdoc />
@@ -21,7 +21,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.3")
+                .HasAnnotation("ProductVersion", "9.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -59,7 +59,7 @@ namespace EShop.Ordering.Infra.Data.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("EShop.Ordering.Domain.Models.Order", b =>
@@ -149,11 +149,6 @@ namespace EShop.Ordering.Infra.Data.Migrations
                         {
                             b1.IsRequired();
 
-                            b1.Property<string>("CVV")
-                                .IsRequired()
-                                .HasMaxLength(3)
-                                .HasColumnType("nvarchar(3)");
-
                             b1.Property<string>("CardName")
                                 .IsRequired()
                                 .HasMaxLength(50)
@@ -164,15 +159,19 @@ namespace EShop.Ordering.Infra.Data.Migrations
                                 .HasMaxLength(25)
                                 .HasColumnType("nvarchar(25)");
 
+                            b1.Property<string>("Cvv")
+                                .IsRequired()
+                                .HasMaxLength(3)
+                                .HasColumnType("nvarchar(3)");
+
                             b1.Property<string>("Expiration")
                                 .IsRequired()
                                 .HasMaxLength(5)
                                 .HasColumnType("nvarchar(5)");
 
-                            b1.Property<string>("PaymentMethod")
-                                .IsRequired()
+                            b1.Property<int>("PaymentMethod")
                                 .HasMaxLength(50)
-                                .HasColumnType("nvarchar(50)");
+                                .HasColumnType("int");
                         });
 
                     b.ComplexProperty<Dictionary<string, object>>("ShippingAddress", "EShop.Ordering.Domain.Models.Order.ShippingAddress#Address", b1 =>

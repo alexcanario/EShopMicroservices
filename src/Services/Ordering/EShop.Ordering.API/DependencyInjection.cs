@@ -1,6 +1,4 @@
-﻿using Carter;
-
-using EShop.BuildingBlocks.Behaviors;
+﻿using EShop.BuildingBlocks.Behaviors;
 
 using System.Reflection;
 
@@ -10,8 +8,6 @@ public static class DependencyInjection
 {
 	public static IServiceCollection AddApiServices(this IServiceCollection services)
 	{
-		services.AddCarter();
-
 		services.AddMediatR(configuration =>
 		{
 			configuration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
@@ -24,8 +20,6 @@ public static class DependencyInjection
 
 	public static WebApplication UseApiServices(this WebApplication app)
 	{
-		app.MapCarter();
-
 		return app;
 	}
 }
