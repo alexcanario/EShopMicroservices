@@ -4,7 +4,8 @@ using System.Reflection;
 
 namespace EShop.Ordering.Infra.Data;
 
-public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) : DbContext(options), IOrderingDbContext
+public class OrderingDbContext(DbContextOptions<OrderingDbContext> options) 
+	: DbContext(options), IOrderingDbContext
 {
 	public DbSet<Product> Products => Set<Product>();
 	public DbSet<Customer> Customers => Set<Customer>();
