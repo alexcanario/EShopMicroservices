@@ -397,4 +397,30 @@ FodyWeavers.xsd
 *.msp
 
 # JetBrains Rider
+.idea/
 *.sln.iml
+*.dotCover
+.idea/
+*.sln.iml
+*.userprefs
+# Rider caches
+.idea/
+*.sln.iml
+# Rider-specific workspace files
+*.sln.ide
+# Rider logs
+.idea/.idea.log
+.idea/.idea_modules/
+.idea/.idea_config/
+.idea/.idea_workspace/
+.idea/.idea_data/
+.idea/.idea_index/
+.idea/.idea_modules/
+.idea/.idea_config/
+.idea/.idea_workspace/
+.idea/.idea_data/
+.idea/.idea_index/
+# Rider local history
+.idea/.localHistory/
+# Rider shelf
+.idea/shelf/

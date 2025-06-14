@@ -7,16 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\EShop.BuildingBlocks\EShop.BuildingBlocks.csproj" />
     <ProjectReference Include="..\EShop.Ordering.Domain\EShop.Ordering.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Orders\EventHandlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
   </ItemGroup>
 
 </Project>

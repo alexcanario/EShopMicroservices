@@ -1,27 +1,29 @@
 using EShop.Ordering.API;
 using EShop.Ordering.App;
 using EShop.Ordering.Infra;
-using EShop.Ordering.Infra.Data.Extensions;
+using EShop.Ordering.Infra.Database.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 #region Add services to the container.
+
 builder.Services
-	.AddApiServices()
 	.AddApplicationServices()
-	.AddInfraServices(builder.Configuration);
+	.AddInfraServices(builder.Configuration)
+	.AddApiServices();
 #endregion
 
 var app = builder.Build();
 
-#region Configure the HTTP request pipeline.
+#region Configure services in container
+
 app.UseApiServices();
 
 #endregion
 
 if (app.Environment.IsDevelopment())
 {
-	await app.InitialiseDatabaseAsync();
+	await app.InitializeDatabaseAsync();
 }
 
 app.Run();

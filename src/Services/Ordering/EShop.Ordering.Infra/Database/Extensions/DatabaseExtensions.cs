@@ -1,20 +1,22 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using EShop.Ordering.Infra.Data.Extensions;
+
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Ordering.Infra.Data.Extensions;
+namespace EShop.Ordering.Infra.Database.Extensions;
 
-public static class SeedExtensions
+public static class DatabaseExtensions
 {
-	public static async Task InitialiseDatabaseAsync(this WebApplication app)
+	public static async Task InitializeDatabaseAsync(this IApplicationBuilder app)
 	{
-		using var scope = app.Services.CreateScope();
+		using var scope = app.ApplicationServices.CreateScope();
 		var context = scope.ServiceProvider.GetRequiredService<OrderingDbContext>();			
 		
 		var pendingMigrations = await context.Database.GetPendingMigrationsAsync();
 		if (pendingMigrations.Any())
 			await context.Database.MigrateAsync();
 
-		await SeedDataAsync(context);
+		await SeedDataAsync(context); 
 	}
 
 	private static async Task SeedDataAsync(OrderingDbContext context)

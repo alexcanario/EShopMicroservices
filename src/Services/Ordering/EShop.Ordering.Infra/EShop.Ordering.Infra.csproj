@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EShop.Ordering.App\EShop.Ordering.App.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.5" />
 
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
@@ -30,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Database\" />
+    <ProjectReference Include="..\EShop.Ordering.App\EShop.Ordering.App.csproj" />
   </ItemGroup>
 
 </Project>

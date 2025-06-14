@@ -32,3 +32,4 @@ services:
 volumes:
   postgres_catalog:
   postgres_basket:
+  sqlserver_order:  
