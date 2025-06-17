@@ -1,7 +1,6 @@
 ﻿namespace EShop.Ordering.App.Orders.EventHandlers;
 
-public class OrderCreateEventHandler(ILogger<OrderCreateEventHandler> logger) 
-    : INotificationHandler<OrderCreatedEvent>
+public class OrderCreateEventHandler(ILogger<OrderCreateEventHandler> logger) : INotificationHandler<OrderCreatedEvent>
 {
     public Task Handle(OrderCreatedEvent notification, CancellationToken cancellationToken)
     {

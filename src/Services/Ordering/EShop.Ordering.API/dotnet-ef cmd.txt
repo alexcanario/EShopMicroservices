@@ -8,3 +8,5 @@ dotnet-ef migrations add Initial-Creation -o Database/Migrations -p .\Services\O
 dotnet-ef database update --project .\Ordering\EShop.Ordering.Infra\ --startup-project .\Ordering\EShop.Ordering.API\
 
 Com o dotnet-ef executado como está acima, não foi necessário adicionar o OrderingDbContextFactory, que não está a ser compilado.
+
+

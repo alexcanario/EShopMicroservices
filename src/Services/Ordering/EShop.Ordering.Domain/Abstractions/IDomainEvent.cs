@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace EShop.Ordering.Domain.Abstractions;
+﻿namespace EShop.Ordering.Domain.Abstractions;
 
 public interface IDomainEvent : INotification
 {
