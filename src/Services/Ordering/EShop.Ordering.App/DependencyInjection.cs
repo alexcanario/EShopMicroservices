@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
 using System.Reflection;
+using EShop.BuildingBlocks.Behaviors;
 
 namespace EShop.Ordering.App;
 
@@ -11,6 +12,9 @@ public static class DependencyInjection
 		services.AddMediatR(cfg =>
 		{
 			cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+			cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+			cfg.AddOpenBehavior(typeof(LoggingBehavior<,>)); 
+
 		});
 		return services;
 	}
