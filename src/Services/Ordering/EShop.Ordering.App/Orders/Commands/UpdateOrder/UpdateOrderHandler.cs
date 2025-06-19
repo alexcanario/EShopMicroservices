@@ -1,4 +1,6 @@
-﻿namespace EShop.Ordering.App.Orders.Commands.UpdateOrder;
+﻿using EShop.Ordering.App.DataTransfers;
+
+namespace EShop.Ordering.App.Orders.Commands.UpdateOrder;
 
 internal sealed class UpdateOrderHandler(IOrderingDbContext ctx) 
     : ICommandHandler<UpdateOrderCommand, UpdateOrderResult>
