@@ -7,10 +7,10 @@ namespace EShop.Discount.Grpc.Database;
 
 public class DiscountContext(DbContextOptions options) : DbContext(options) 
 {
-	public DbSet<Coupoun> Coupouns { get; set; }
+	public DbSet<Coupon> Coupons { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		modelBuilder.Entity<Coupoun>().SeedCoupoun();
+		modelBuilder.Entity<Coupon>().SeedCoupon();
 	}
 }

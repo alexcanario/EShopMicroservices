@@ -1,4 +1,6 @@
-﻿namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
+﻿using EShop.Ordering.App.DataTransfers;
+
+namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
 
 internal sealed class CreateOrderHandler(IOrderingDbContext context) 
     : ICommandHandler<CreateOrderCommand, CreateOrderResult>

@@ -1,9 +1,4 @@
-﻿using EShop.BuildingBlocks.Behaviors;
-
-using System.Reflection;
-using Carter;
-
-namespace EShop.Ordering.API;
+﻿namespace EShop.Ordering.API;
 
 public static class DependencyInjection
 {

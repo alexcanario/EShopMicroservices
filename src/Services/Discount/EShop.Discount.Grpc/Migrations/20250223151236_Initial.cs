@@ -13,7 +13,7 @@ public partial class Initial : Migration
 	protected override void Up(MigrationBuilder migrationBuilder)
 	{
 		migrationBuilder.CreateTable(
-			name: "Coupouns",
+			name: "Coupons",
 			columns: table => new
 			{
 				Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -28,7 +28,7 @@ public partial class Initial : Migration
 			});
 
 		migrationBuilder.InsertData(
-			table: "Coupouns",
+			table: "Coupons",
 			columns: new[] { "Id", "Amount", "Description", "ProductName" },
 			values: new object[,]
 			{
@@ -41,6 +41,6 @@ public partial class Initial : Migration
 	protected override void Down(MigrationBuilder migrationBuilder)
 	{
 		migrationBuilder.DropTable(
-			name: "Coupouns");
+			name: "Coupons");
 	}
 }

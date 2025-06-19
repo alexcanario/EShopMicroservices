@@ -1,6 +1,6 @@
 ﻿using EShop.Ordering.Domain.Enums;
 
-namespace EShop.Ordering.App.Dtos;
+namespace EShop.Ordering.App.DataTransfers;
 
 public record OrderDto(
 	Guid Id, 
