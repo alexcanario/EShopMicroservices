@@ -1,6 +1,7 @@
 ﻿using EShop.BuildingBlocks.Behaviors;
 
 using System.Reflection;
+using Carter;
 
 namespace EShop.Ordering.API;
 
@@ -8,18 +9,15 @@ public static class DependencyInjection
 {
 	public static IServiceCollection AddApiServices(this IServiceCollection services)
 	{
-		services.AddMediatR(configuration =>
-		{
-			configuration.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
-			configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
-			configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
-		});
-
+		services.AddCarter();
+		
 		return services;
 	}
 
-	public static IApplicationBuilder UseApiServices(this IApplicationBuilder app)
+	public static IApplicationBuilder UseApiServices(this WebApplication app)
 	{
+		app.MapCarter();
+
 		return app;
 	}
 }
