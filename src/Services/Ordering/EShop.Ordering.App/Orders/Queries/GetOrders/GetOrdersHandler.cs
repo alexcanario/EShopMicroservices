@@ -1,7 +1,4 @@
-﻿using EShop.BuildingBlocks.Pagination;
-using EShop.Ordering.App.Extensions;
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Ordering.App.Orders.Queries.GetOrders;
 

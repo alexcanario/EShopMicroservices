@@ -15,7 +15,7 @@ public static class OrderExtension
             order.OrderItems.ToDtoList());
     }
 
-    public static IList<OrderDto> ToDtoList(this List<Order> orders)
+    public static IList<OrderDto> ToDtoList(this IList<Order> orders)
     {
         return orders.Select(order => order.ToDto()).ToList();
     }
