@@ -1,4 +1,6 @@
-﻿namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
+﻿using EShop.Ordering.App.DataTransfers;
+
+namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
 
 public sealed record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EShop.Ordering.App.DataTransfers;
+using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Ordering.App.Orders.Queries.GetOrders;
 

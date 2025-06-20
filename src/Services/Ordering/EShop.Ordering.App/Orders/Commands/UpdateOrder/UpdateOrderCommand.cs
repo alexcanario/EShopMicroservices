@@ -1,4 +1,6 @@
-﻿namespace EShop.Ordering.App.Orders.Commands.UpdateOrder;
+﻿using EShop.Ordering.App.DataTransfers;
+
+namespace EShop.Ordering.App.Orders.Commands.UpdateOrder;
 
 public sealed record UpdateOrderCommand(OrderDto Order) : ICommand<UpdateOrderResult>;
 

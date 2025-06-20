@@ -6,11 +6,11 @@ namespace EShop.Discount.Grpc.Seed;
 
 public static class Seed
 {
-	public static void SeedCoupoun(this EntityTypeBuilder<Coupoun> modelBuilder)
+	public static void SeedCoupon(this EntityTypeBuilder<Coupon> modelBuilder)
 	{
 		modelBuilder.HasData(
-			new Coupoun { Id = 1, ProductName = "Iphone X", Description = "Iphone discount", Amount = 150 },
-			new Coupoun { Id = 2, ProductName = "Samsung 10", Description = "Samsung discount", Amount = 20 }
+			new Coupon { Id = 1, ProductName = "Iphone X", Description = "Iphone discount", Amount = 150 },
+			new Coupon { Id = 2, ProductName = "Samsung 10", Description = "Samsung discount", Amount = 20 }
 		);
 	}
 }	

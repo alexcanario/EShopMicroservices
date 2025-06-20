@@ -1,4 +1,6 @@
-﻿namespace EShop.Ordering.App.Extensions;
+﻿using EShop.Ordering.App.DataTransfers;
+
+namespace EShop.Ordering.App.Extensions;
 
 public static class PaymentExtension
 {
