@@ -4,7 +4,7 @@ namespace EShop.Ordering.App.Orders.Commands.CreateOrder;
 
 public sealed record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
 
-public sealed record CreateOrderResult(Guid Id);
+public sealed record CreateOrderResult(Guid OrderId);
 
 public sealed class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
 {

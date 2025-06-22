@@ -13,15 +13,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EShop.Ordering.Infra.Database.Migrations
 {
     [DbContext(typeof(OrderingDbContext))]
-    [Migration("20250608222506_Initial-Creation")]
-    partial class InitialCreation
+    [Migration("20250621082626_Initial-V0")]
+    partial class InitialV0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.5")
+                .HasAnnotation("ProductVersion", "9.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

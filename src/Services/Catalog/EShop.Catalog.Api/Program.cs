@@ -1,22 +1,24 @@
 using EShop.Catalog.Api.Data;
+
 using HealthChecks.UI.Client;
+
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
 #region Add services to the container.
 
-var asembly = typeof(Program).Assembly;
+var assembly = typeof(Program).Assembly;
 var sqlCatalogConnectionString = builder.Configuration.GetConnectionString("CatalogConnection")!;
 
 builder.Services.AddMediatR(config =>
 {
-	config.RegisterServicesFromAssemblies(asembly);
+	config.RegisterServicesFromAssemblies(assembly);
 	config.AddOpenBehavior(typeof(ValidationBehavior<,>));
 	config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
-builder.Services.AddValidatorsFromAssembly(asembly);
+builder.Services.AddValidatorsFromAssembly(assembly);
 
 builder.Services.AddCarter();
 

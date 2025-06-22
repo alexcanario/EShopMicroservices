@@ -8,7 +8,7 @@ public class GetOrderByName : ICarterModule
 {
 	public void AddRoutes(IEndpointRouteBuilder app)
 	{
-		app.MapGet("/orders/{ordername}", async (GetOrderByNameRequest request, ISender sender) =>
+		app.MapGet("/orders/{orderName}", async ([AsParameters] GetOrderByNameRequest request, ISender sender) =>
 		{
 			var response = await sender.Send(new GetOrdersByNameQuery(request.OrderName));
 
@@ -21,6 +21,7 @@ public class GetOrderByName : ICarterModule
 		.WithName("GetOrderByName")
 		.Produces<GetOrderByNameResponse>(StatusCodes.Status200OK)
 		.ProducesProblem(StatusCodes.Status404NotFound)
+		.ProducesProblem(StatusCodes.Status400BadRequest)
 		.WithSummary("GetOrderByName")
 		.WithDescription("Retrieves orders by their name. If no orders are found, it returns a 404 Not Found response.");
 	}

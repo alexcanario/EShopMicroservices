@@ -34,7 +34,7 @@ internal sealed class CreateOrderHandler(IOrderingDbContext context)
 			orderName: OrderName.Of(orderDto.OrderName),
 			shippingAddress: shippingAddress,
 			billingAddress: billingAddress,
-			payment: Payment.Of(orderDto.Payment.CardName, orderDto.Payment.CardNumber, orderDto.Payment.ExpirationDate, orderDto.Payment.Cvv, orderDto.Payment.PaymentMethod)
+			payment: Payment.Of(orderDto.Payment.CardName, orderDto.Payment.CardNumber, orderDto.Payment.Expiration, orderDto.Payment.Cvv, orderDto.Payment.PaymentMethod)
 		);
 
 		foreach (var item in orderDto.OrderItems)

@@ -1,5 +1,4 @@
-﻿using EShop.Ordering.App.Extensions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace EShop.Ordering.App.Orders.Queries.GetOrdersByName;
 
@@ -15,7 +14,7 @@ internal sealed class GetOrdersByNameQueryHandler(IOrderingDbContext context)
             .AsNoTracking()
             .Include(o => o.OrderItems)
             .Where(o => o.OrderName.Value.Contains(query.Name))
-            .OrderBy(o => o.OrderName)
+            .OrderBy(o => o.OrderName.Value)
             .ToListAsync(cancellationToken);
 
         return new GetOrdersByNameQueryResult(orders.ToDtoList());

@@ -1,15 +1,15 @@
 ﻿namespace EShop.Ordering.API.Endpoints;
 
-public record GetOrderByCustomerRequest(Guid CustomerId);
+//public record GetOrderByCustomerRequest(Guid CustomerId);
 public record GetOrderByCustomerResponse(IEnumerable<OrderDto> Orders);
 
 public class GetOrderByCustomer : ICarterModule
 {
 	public void AddRoutes(IEndpointRouteBuilder app)
 	{
-		app.MapGet("/orders/customer/{customerId}", async (GetOrderByCustomerRequest request, ISender sender) =>
+		app.MapGet("/orders/customer/{customerId:guid}", async (Guid customerId, ISender sender) =>
 		{
-			var response = await sender.Send(new GetOrdersByCustomerQuery(request.CustomerId));
+			var response = await sender.Send(new GetOrdersByCustomerQuery(customerId));
 			var result = response.Adapt<GetOrderByCustomerResponse>();
 			return result.Orders.Any()
 				? Results.Ok(result)
