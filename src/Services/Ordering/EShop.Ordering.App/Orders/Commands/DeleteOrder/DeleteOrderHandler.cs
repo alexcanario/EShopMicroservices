@@ -8,7 +8,9 @@ internal sealed class DeleteOrderHandler(IOrderingDbContext ctx)
 		var orderId = OrderId.Of(command.Id);
 		var orderToRemove = await ctx.Orders.FindAsync([orderId], cancellationToken);
 		if (orderToRemove is null)
-			throw new NotFoundException($"Order with id {orderId} not found");
+		{
+			throw new NotFoundException($"Order with id {orderId} not found.");
+		}
 		
 		ctx.Orders.Remove(orderToRemove);
 		await ctx.SaveChangesAsync(cancellationToken);

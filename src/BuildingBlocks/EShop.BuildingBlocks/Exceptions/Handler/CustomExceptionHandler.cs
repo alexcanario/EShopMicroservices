@@ -6,11 +6,11 @@ using Microsoft.Extensions.Logging;
 
 namespace EShop.BuildingBlocks.Exceptions.Handler;
 
-public class CustomExceptionHandler(ILogger<CustomExceptionHandler> Logger) : IExceptionHandler
+public class CustomExceptionHandler(ILogger<CustomExceptionHandler> logger) : IExceptionHandler
 {
 	public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken cancellationToken)
 	{
-		Logger.LogError("Error Message: {exceptionMessage}, Time of occurrence {time}", exception.Message, DateTime.UtcNow);
+		logger.LogError("Error Message: {exceptionMessage}, Time of occurrence {time}", exception.Message, DateTime.UtcNow);
 
 		(string Detail, string Title, int StatusCode) details = exception switch
 		{
