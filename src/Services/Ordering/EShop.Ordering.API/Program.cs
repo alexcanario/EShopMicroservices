@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
 	.AddApplicationServices()
 	.AddInfraServices(builder.Configuration)
-	.AddApiServices();
+	.AddApiServices(builder.Configuration);
 #endregion
 
 var app = builder.Build();
