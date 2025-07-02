@@ -1,6 +1,6 @@
 ﻿namespace EShop.Basket.API.Basket.StoreBasket;
 
-public record StoreBasketResponse(bool IsSucess, string Username);
+public record StoreBasketResponse(bool IsSuccess, string Username);
 public record StoreBasketRequest(ShoppingCart Cart);
 
 public class StoreBasketCommandEndpoints : ICarterModule
@@ -13,7 +13,7 @@ public class StoreBasketCommandEndpoints : ICarterModule
 			
 			var response = await sender.Send(command);
 
-			return response.IsSucess
+			return response.IsSuccess
 				? Results.Created($"/basket/{response.Username}", response)
 				: Results.BadRequest();
 		})

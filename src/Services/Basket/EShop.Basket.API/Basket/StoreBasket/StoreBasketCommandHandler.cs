@@ -3,7 +3,7 @@
 namespace EShop.Basket.API.Basket.StoreBasket;
 
 public sealed record StoreBasketCommand(ShoppingCart Cart) : ICommand<StoreBasketResult>;
-public sealed record StoreBasketResult(bool IsSucess, string Username);
+public sealed record StoreBasketResult(bool IsSuccess, string Username);
 
 public class StoreBasketValidation: AbstractValidator<StoreBasketCommand>
 {
@@ -14,7 +14,7 @@ public class StoreBasketValidation: AbstractValidator<StoreBasketCommand>
 		RuleFor(x => x.Cart.Items).Must(x => x.Count > 0).WithMessage("Cart should have at least one item");
 	}
 }
-public class StoreBasketCommandHandler(IBasketRepository BasketRepository, DiscountProtoService.DiscountProtoServiceClient discountProto) 
+public class StoreBasketCommandHandler(IBasketRepository basketRepository, DiscountProtoService.DiscountProtoServiceClient discountProtoService) 
 	: ICommandHandler<StoreBasketCommand, StoreBasketResult>
 {
 	public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
@@ -22,21 +22,19 @@ public class StoreBasketCommandHandler(IBasketRepository BasketRepository, Disco
 		//DONE: Store the cart in the database (using marten upsert support)
 		//DONE: Update cache with the cart
 		await DeductDiscount(command.Cart, cancellationToken).ConfigureAwait(false);
-		var storedCart = await BasketRepository.StoreBasketAsync(command.Cart, cancellationToken);
+		var storedCart = await basketRepository.StoreBasketAsync(command.Cart, cancellationToken);
 
-		return storedCart is null 
-			? new StoreBasketResult(false, "Store Basket Error")
-			: new StoreBasketResult(true, storedCart.Username);
+		return new StoreBasketResult(true, storedCart.Username);
 	}
 
 	private async Task DeductDiscount(ShoppingCart cart, CancellationToken cancellation)
 	{
 		foreach (var item in cart.Items)
 		{
-			if(item is null) continue;
+			if(string.IsNullOrEmpty(item.ProductName) || item.Price <= 0) continue;
 
-			var coupoun = await discountProto.GetDiscountAsync(new GetDiscountRequest { ProductName = item.ProductName });
-			item.Price -= coupoun.Amount;
+			var coupon = await discountProtoService.GetDiscountAsync(new GetDiscountRequest { ProductName = item.ProductName });
+			item.Price -= coupon.Amount;
 		}
 	}
 }
