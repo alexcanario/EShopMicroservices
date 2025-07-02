@@ -3,7 +3,9 @@ using EShop.BuildingBlocks.Exceptions.Handler;
 using EShop.Discount.Grpc;
 
 using HealthChecks.UI.Client;
+
 using JasperFx;
+
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
