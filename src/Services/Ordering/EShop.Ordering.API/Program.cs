@@ -1,14 +1,9 @@
-using EShop.Ordering.API;
-using EShop.Ordering.App;
-using EShop.Ordering.Infra;
-using EShop.Ordering.Infra.Database.Extensions;
-
 var builder = WebApplication.CreateBuilder(args);
 
 #region Add services to the container.
 
 builder.Services
-	.AddApplicationServices()
+	.AddApplicationServices(builder.Configuration)
 	.AddInfraServices(builder.Configuration)
 	.AddApiServices(builder.Configuration);
 #endregion
