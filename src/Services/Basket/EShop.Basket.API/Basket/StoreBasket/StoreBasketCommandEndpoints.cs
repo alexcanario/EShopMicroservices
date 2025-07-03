@@ -1,8 +1,5 @@
 ﻿namespace EShop.Basket.API.Basket.StoreBasket;
 
-public record StoreBasketResponse(bool IsSuccess, string Username);
-public record StoreBasketRequest(ShoppingCart Cart);
-
 public class StoreBasketCommandEndpoints : ICarterModule
 {
 	public void AddRoutes(IEndpointRouteBuilder app)

@@ -19,7 +19,6 @@ var basketConnectionString = builder.Configuration.GetConnectionString("BasketCo
 
 #region Add services to the container.
 
-
 #region Data Services
 
 builder.Services.AddMarten(options =>
@@ -66,7 +65,6 @@ builder.Services.AddMessageBroker(builder.Configuration, Assembly.GetExecutingAs
 
 #endregion Async Services
 
-
 #region Cross-Cutting Services
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
@@ -88,7 +86,6 @@ builder.Services.AddMediatR(config =>
 });
 
 #endregion Cqrs Services
-
 
 #endregion
 
