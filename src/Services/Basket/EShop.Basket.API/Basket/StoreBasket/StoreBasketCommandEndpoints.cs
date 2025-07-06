@@ -17,7 +17,7 @@ public class StoreBasketCommandEndpoints : ICarterModule
 			.WithName("StoreBasket")
 			.WithDescription("Get the basket for the user")
 			.WithSummary("Get the basket for the user")
-			.Produces<StoreBasketResponse>(StatusCodes.Status200OK)
+			.Produces<StoreBasketResponse>()
 			.ProducesProblem(StatusCodes.Status400BadRequest);
 	}
 }

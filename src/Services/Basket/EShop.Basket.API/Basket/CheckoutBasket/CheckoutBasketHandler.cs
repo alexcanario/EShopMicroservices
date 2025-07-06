@@ -17,6 +17,7 @@ public class CheckoutBasketHandler(IBasketRepository BasketRepository, IPublishE
 			return new CheckoutBasketResult(false);
 		}
 
+		//TODO Validate the basket items and total price
 		var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
 
 		eventMessage.TotalPrice = basket.TotalPrice;

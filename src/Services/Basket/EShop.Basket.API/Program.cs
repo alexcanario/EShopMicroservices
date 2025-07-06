@@ -1,16 +1,3 @@
-using EShop.BuildingBlocks.Behaviors;
-using EShop.BuildingBlocks.Exceptions.Handler;
-using EShop.BuildingBlocks.Messaging.MassTransit;
-using EShop.Discount.Grpc;
-
-using HealthChecks.UI.Client;
-
-using JasperFx;
-
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-
-using System.Reflection;
-
 var builder = WebApplication.CreateBuilder(args);
 
 var assembly = typeof(Program).Assembly;

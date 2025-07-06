@@ -1,10 +1,10 @@
 ﻿namespace EShop.BuildingBlocks.Messaging.Events;
 
-public record BasketCheckoutEvent : IntegrationEvent
+public sealed record BasketCheckoutEvent : IntegrationEvent
 {
 	public string UserName { get; set; } = string.Empty;
 	public Guid CustomerId { get; set; }
-	public decimal TotalPrice { get; set; } = default;
+	public decimal TotalPrice { get; set; } = decimal.Zero;
 
 	public string FirstName { get; set; } = string.Empty;
 	public string LastName { get; set; } = string.Empty;
@@ -18,5 +18,7 @@ public record BasketCheckoutEvent : IntegrationEvent
 	public string CardNumber { get; set; } = string.Empty;
 	public string CardExpiration { get; set; } = string.Empty;
 	public string CardSecurityNumber { get; set; } = string.Empty;
-	public int PaymentMethod { get; set; } = default;
+	public int PaymentMethod { get; set; } = -1;
+
+	public IList<BasketItemsCheckoutEvent> Items { get; set; } = new List<BasketItemsCheckoutEvent>();
 }
