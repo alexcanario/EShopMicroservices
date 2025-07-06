@@ -1,11 +1,3 @@
-using EShop.BuildingBlocks.Behaviors;
-using EShop.BuildingBlocks.Exceptions.Handler;
-using EShop.Discount.Grpc;
-
-using HealthChecks.UI.Client;
-using JasperFx;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-
 var builder = WebApplication.CreateBuilder(args);
 
 var assembly = typeof(Program).Assembly;
@@ -13,7 +5,6 @@ var assembly = typeof(Program).Assembly;
 var basketConnectionString = builder.Configuration.GetConnectionString("BasketConnection");
 
 #region Add services to the container.
-
 
 #region Data Services
 
@@ -55,6 +46,12 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
 
 #endregion gRPC Services
 
+#region Async Services
+
+builder.Services.AddMessageBroker(builder.Configuration, Assembly.GetExecutingAssembly());
+
+#endregion Async Services
+
 #region Cross-Cutting Services
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
@@ -65,8 +62,7 @@ builder.Services.AddHealthChecks()
 #endregion Cross-Cutting Services
 
 builder.Services.AddCarter();
-
-
+  
 #region Cqrs Services
 
 builder.Services.AddMediatR(config =>
@@ -77,7 +73,6 @@ builder.Services.AddMediatR(config =>
 });
 
 #endregion Cqrs Services
-
 
 #endregion
 

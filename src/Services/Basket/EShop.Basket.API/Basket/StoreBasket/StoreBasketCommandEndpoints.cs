@@ -1,8 +1,5 @@
 ﻿namespace EShop.Basket.API.Basket.StoreBasket;
 
-public record StoreBasketResponse(bool IsSuccess, string Username);
-public record StoreBasketRequest(ShoppingCart Cart);
-
 public class StoreBasketCommandEndpoints : ICarterModule
 {
 	public void AddRoutes(IEndpointRouteBuilder app)
@@ -20,7 +17,7 @@ public class StoreBasketCommandEndpoints : ICarterModule
 			.WithName("StoreBasket")
 			.WithDescription("Get the basket for the user")
 			.WithSummary("Get the basket for the user")
-			.Produces<StoreBasketResponse>(StatusCodes.Status200OK)
+			.Produces<StoreBasketResponse>()
 			.ProducesProblem(StatusCodes.Status400BadRequest);
 	}
 }

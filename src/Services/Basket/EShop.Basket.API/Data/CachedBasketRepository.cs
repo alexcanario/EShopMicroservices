@@ -1,9 +1,6 @@
-﻿using System.Text.Json;
-using Microsoft.Extensions.Caching.Distributed;
+﻿namespace EShop.Basket.API.Data;
 
-namespace EShop.Basket.API.Data;
-
-public class CachedBasketRepository(IBasketRepository basketRepository, IDistributedCache cache) : IBasketRepository
+public sealed class CachedBasketRepository(IBasketRepository basketRepository, IDistributedCache cache) : IBasketRepository
 {
 	public async Task<bool> DeleteBasketAsync(string userName, CancellationToken cancellationToken)
 	{
