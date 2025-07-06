@@ -14,7 +14,7 @@ internal sealed class GetOrdersByCustomerQueryHandler(IOrderingDbContext context
             .Include(o => o.OrderItems)
             .Where(o => o.CustomerId == CustomerId.Of(query.CustomerId))
             .OrderBy(o => o.OrderName.Value)
-            .Select(order => order.ToDto()).ToListAsync(cancellationToken);
+            .Select(order => order.ToOrderDto()).ToListAsync(cancellationToken);
 
         return new GetOrdersByCustomerQueryResult(orders);
     }

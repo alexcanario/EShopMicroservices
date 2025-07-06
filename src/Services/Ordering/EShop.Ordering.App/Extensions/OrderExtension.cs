@@ -4,7 +4,7 @@ namespace EShop.Ordering.App.Extensions;
 
 public static class OrderExtension
 {
-    public static OrderDto ToDto(this Order order)
+    public static OrderDto ToOrderDto(this Order order)
     {
         return new OrderDto(
             order.Id.Value,
@@ -19,6 +19,6 @@ public static class OrderExtension
 
     public static IList<OrderDto> ToDtoList(this IList<Order> orders)
     {
-        return orders.Select(order => order.ToDto()).ToList();
+        return orders.Select(order => order.ToOrderDto()).ToList();
     }
 }
