@@ -1,4 +1,6 @@
-﻿namespace EShop.Ordering.App;
+﻿using Microsoft.FeatureManagement;
+
+namespace EShop.Ordering.App;
 
 public static class DependencyInjection
 {
@@ -12,6 +14,7 @@ public static class DependencyInjection
 
 		});
 
+		services.AddFeatureManagement();
 		services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
 
 		return services;
