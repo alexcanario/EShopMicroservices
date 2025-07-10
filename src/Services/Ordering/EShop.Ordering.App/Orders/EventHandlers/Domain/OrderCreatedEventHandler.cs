@@ -10,6 +10,7 @@ public class OrderCreatedEventHandler(IPublishEndpoint publishEndpoint, ILogger<
         var orderCreatedIntegrationEvent = domainEvent.Order.ToOrderDto();
 
         await publishEndpoint.Publish(orderCreatedIntegrationEvent, cancellationToken);
+
         logger.LogInformation("Integration event published: {IntegrationEvent}", orderCreatedIntegrationEvent.GetType().Name);
 	}
 }

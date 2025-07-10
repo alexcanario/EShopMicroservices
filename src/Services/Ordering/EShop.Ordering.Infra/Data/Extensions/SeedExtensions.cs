@@ -1,11 +1,9 @@
-﻿using EShop.Ordering.Infra.Data.Extensions;
-
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EShop.Ordering.Infra.Database.Extensions;
+namespace EShop.Ordering.Infra.Data.Extensions;
 
-public static class DatabaseExtensions
+public static class SeedExtensions
 {
 	public static async Task InitializeDatabaseAsync(this IApplicationBuilder app)
 	{
