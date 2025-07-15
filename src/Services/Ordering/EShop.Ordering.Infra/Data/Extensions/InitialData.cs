@@ -1,6 +1,6 @@
 ﻿namespace EShop.Ordering.Infra.Data.Extensions;
 
-internal class InitialData
+internal static class InitialData
 {
 	public static IEnumerable<Customer> Customers =>
 		new List<Customer>

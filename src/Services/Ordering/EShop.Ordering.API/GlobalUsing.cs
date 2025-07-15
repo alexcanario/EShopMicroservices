@@ -10,8 +10,6 @@ global using EShop.Ordering.App.Orders.Queries.GetOrders;
 global using EShop.Ordering.App.Orders.Queries.GetOrdersByCustomer;
 global using EShop.Ordering.App.Orders.Queries.GetOrdersByName;
 global using EShop.Ordering.Infra;
-global using EShop.Ordering.Infra.Database.Extensions;
-
 global using Mapster;
 
 global using MediatR;
