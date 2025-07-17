@@ -20,14 +20,14 @@ public static class Extensions
 
 			config.UsingRabbitMq((context, cfg) =>
 			{
-				var host = configuration["MessageBroker:RabbitMQ:host"]!;
-				var port = configuration["MessageBroker:RabbitMQ:Port"]!;
+				var host = configuration["MessageBroker:host"]!;
+				var port = configuration["MessageBroker:Port"]!;
 				var uri = new Uri($"{host}:{port}");
 
 				cfg.Host(uri, hostConfig =>
 				{
-					hostConfig.Username(configuration["MessageBroker:RabbitMQ:UserName"]!);
-					hostConfig.Password(configuration["MessageBroker:RabbitMQ:Password"]!);
+					hostConfig.Username(configuration["MessageBroker:UserName"]!);
+					hostConfig.Password(configuration["MessageBroker:Password"]!);
 				});
 				cfg.ConfigureEndpoints(context);
 			});

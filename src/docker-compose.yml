@@ -11,6 +11,9 @@ services:
   orderdb:
     image: mcr.microsoft.com/mssql/server
 
+  messagebroker:
+    image: rabbitmq:management
+
   eshop.catalog.api:
     image: ${DOCKER_REGISTRY-}eshopcatalogapi
     build:
@@ -33,3 +36,4 @@ volumes:
   postgres_catalog:
   postgres_basket:
   sqlserver_order:  
+  rabbitmq_data:

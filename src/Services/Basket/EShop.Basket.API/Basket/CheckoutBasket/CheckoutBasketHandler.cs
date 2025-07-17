@@ -1,6 +1,6 @@
 ﻿namespace EShop.Basket.API.Basket.CheckoutBasket;
 
-public class CheckoutBasketHandler(IBasketRepository BasketRepository, IPublishEndpoint PublishEndpoint)
+public class CheckoutBasketHandler(IBasketRepository basketRepository, IPublishEndpoint publishEndpoint)
 	: ICommandHandler<CheckoutBasketCommand, CheckoutBasketResult>
 {
 	public async Task<CheckoutBasketResult> Handle(CheckoutBasketCommand command, CancellationToken cancellationToken)
@@ -11,20 +11,16 @@ public class CheckoutBasketHandler(IBasketRepository BasketRepository, IPublishE
 		//DONE delete the basket
 
 		//UNIT-TEST: BasketCheckoutHandlerTests
-		var basket = await BasketRepository.GetBasketAsync(command.BasketCheckoutDto.UserName, cancellationToken);
-		if (basket is null)
-		{
-			return new CheckoutBasketResult(false);
-		}
+		var basket = await basketRepository.GetBasketAsync(command.BasketCheckoutDto.UserName, cancellationToken);
 
-		//TODO Validate the basket items and total price
+        //TODO Validate the basket items and total price
 		var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
 
 		eventMessage.TotalPrice = basket.TotalPrice;
 
-		await PublishEndpoint.Publish(eventMessage, cancellationToken);
+		await publishEndpoint.Publish(eventMessage, cancellationToken);
 
-		await BasketRepository.DeleteBasketAsync(command.BasketCheckoutDto.UserName, cancellationToken);
+		await basketRepository.DeleteBasketAsync(command.BasketCheckoutDto.UserName, cancellationToken);
 
 		return new CheckoutBasketResult(true);
 	}
