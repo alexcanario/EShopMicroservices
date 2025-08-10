@@ -12,7 +12,10 @@ public class BasketRepository(IDocumentSession Session) : IBasketRepository
 	public async ValueTask<ShoppingCart> GetBasketAsync(string userName, CancellationToken cancellationToken)
 	{
 		var basket = await Session.LoadAsync<ShoppingCart>(userName, cancellationToken);
-		return basket ?? throw new BasketNotFoundException(userName);
+
+        //todo: logar if basket is null
+        //Implementar result pattern to return null 
+        return basket ?? throw new BasketNotFoundException(userName);
 	}
 
 	public async Task<ShoppingCart> StoreBasketAsync(ShoppingCart basket, CancellationToken cancellationToken)

@@ -20,5 +20,5 @@ public sealed record BasketCheckoutEvent : IntegrationEvent
 	public string CardSecurityNumber { get; set; } = string.Empty;
 	public int PaymentMethod { get; set; } = -1;
 
-	public IList<BasketItemsCheckoutEvent> Items { get; set; } = new List<BasketItemsCheckoutEvent>();
+    public IList<BasketItemsCheckoutEvent> Items { get; set; } = [];
 }
