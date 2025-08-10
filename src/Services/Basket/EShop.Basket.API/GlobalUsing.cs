@@ -1,4 +1,7 @@
-﻿global using Carter;
+﻿global using System.Reflection;
+global using System.Text.Json;
+
+global using Carter;
 
 global using EShop.Basket.API.Data;
 global using EShop.Basket.API.DataTransfers;
@@ -28,6 +31,3 @@ global using MediatR;
 
 global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 global using Microsoft.Extensions.Caching.Distributed;
-
-global using System.Reflection;
-global using System.Text.Json;

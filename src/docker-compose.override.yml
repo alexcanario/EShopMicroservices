@@ -40,7 +40,21 @@ services:
       - 1433:1433
     volumes:
       - sqlserver_order:/var/opt/mssql
-      
+
+  messagebroker:
+    container_name: messagebroker
+    hostname: ecommerce-mq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_VHOST=/
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
   eshop.catalog.api:
     container_name: eshop.catalog.api
     environment:
@@ -85,7 +99,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__Database=Data Source=discountDb
+      - ConnectionStrings__Database=Data Source=discount.db
     ports:
       - 6002:8080
       - 6062:8081
