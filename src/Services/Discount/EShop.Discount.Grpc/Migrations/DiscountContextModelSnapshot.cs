@@ -14,9 +14,9 @@ namespace EShop.Discount.Grpc.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
 
-            modelBuilder.Entity("EShop.Discount.Grpc.Models.Coupoun", b =>
+            modelBuilder.Entity("EShop.Discount.Grpc.Models.Coupon", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

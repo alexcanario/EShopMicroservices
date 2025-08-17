@@ -8,7 +8,9 @@ public class StoreBasketCommandHandler(IBasketRepository basketRepository, Disco
 		//DONE Store the cart in the database (using marten upsert support)
 		//DONE Update cache with the cart
 		await DeductDiscount(command.Cart, cancellationToken).ConfigureAwait(false);
-		var storedCart = await basketRepository.StoreBasketAsync(command.Cart, cancellationToken);
+
+        //DONE Verificar se o cart está gravando os itens corretamente
+        var storedCart = await basketRepository.StoreBasketAsync(command.Cart, cancellationToken);
 
 		return new StoreBasketResult(true, storedCart.Username);
 	}
