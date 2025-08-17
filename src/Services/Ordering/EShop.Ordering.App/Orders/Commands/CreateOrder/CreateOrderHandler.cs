@@ -28,18 +28,22 @@ internal sealed class CreateOrderHandler(IOrderingDbContext context)
 
 		var order = Order.Create(
 			id: OrderId.Of(Guid.NewGuid()),
-			customerId: CustomerId.Of(orderDto.CustomerId),
+			//customerId: CustomerId.Of(orderDto.CustomerId),
+			customerId: CustomerId.Of(Guid.Parse("B8490294-9306-4317-A0FF-C2C4BCEBA3CE")),
 			orderName: OrderName.Of(orderDto.OrderName),
 			shippingAddress: shippingAddress,
 			billingAddress: billingAddress,
 			payment: Payment.Of(orderDto.Payment.CardName, orderDto.Payment.CardNumber, orderDto.Payment.Expiration, orderDto.Payment.Cvv, orderDto.Payment.PaymentMethod)
 		);
 
-		foreach (var item in orderDto.OrderItems)
-		{
-			order.AddItem(ProductId.Of(item.ProductId), item.Quantity, item.Price);
-		}
+        //foreach (var item in orderDto.OrderItems)
+        //{
+        //	order.AddItem(ProductId.Of(item.ProductId), item.Quantity, item.Price);
+        //}
 
-		return order;
+        order.AddItem(ProductId.Of(Guid.Parse("F11A2C4D-D80F-42BD-AFE2-0175104AC99C")), orderDto.OrderItems[0].Quantity, orderDto.OrderItems[0].Price);
+        order.AddItem(ProductId.Of(Guid.Parse("B32E9B95-B7BC-4D84-BB0C-2E69F8A988CA")), orderDto.OrderItems[1].Quantity, orderDto.OrderItems[1].Price);
+
+        return order;
 	}
 }

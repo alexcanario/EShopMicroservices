@@ -1,7 +1,6 @@
 Server=.; Database=EShop.OrderingDb; User Id=sa; Password=C@151867; Encrypt=False; TrustServerCertificate=True; MultipleActiveResultSets=True
 Server=localhost,1500; Database=EShop.OrderingDb; User Id=sa; Password=C@151867; Encrypt=False; TrustServerCertificate=True; MultipleActiveResultSets=True
 
-
 dotnet-ef migrations add Initial-Creation --output-dir Data/Migrations --project .\Services\Ordering\EShop.Ordering.Infra\ --startup-project .\Services\Ordering\EShop.Ordering.API\
 dotnet-ef migrations add Initial-Creation -o Database/Migrations -p .\Services\Ordering\EShop.Ordering.Infra\ -s .\Services\Ordering\EShop.Ordering.API\
 
@@ -9,4 +8,4 @@ dotnet-ef database update --project .\Ordering\EShop.Ordering.Infra\ --startup-p
 
 Com o dotnet-ef executado como está acima, não foi necessário adicionar o OrderingDbContextFactory, que não está a ser compilado.
 
-
+dotnet tool update dotnet-ef --global

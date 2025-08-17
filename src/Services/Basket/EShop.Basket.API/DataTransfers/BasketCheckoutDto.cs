@@ -1,8 +1,10 @@
-﻿namespace EShop.Basket.API.DataTransfers;
+﻿using System.Text.Json.Serialization;
+
+namespace EShop.Basket.API.DataTransfers;
 
 public sealed record BasketCheckoutDto
 {
-	public string UserName { get; set; } = string.Empty;
+    public string UserName { get; set; } = string.Empty;
 	public Guid CustomerId { get; set; }
 	public decimal TotalPrice { get; set; } = decimal.Zero;
 
@@ -17,8 +19,9 @@ public sealed record BasketCheckoutDto
 	public string CardName { get; set; } = string.Empty;
 	public string CardNumber { get; set; } = string.Empty;
 	public string CardExpiration { get; set; } = string.Empty;
+    [JsonPropertyName("cvv")]
 	public string CardSecurityNumber { get; set; } = string.Empty;
 	public int PaymentMethod { get; set; } = -1;
 
-	public IList<BasketItemsCheckoutDto> Items { get; set; } = new List<BasketItemsCheckoutDto>();
+	public IList<BasketItemsCheckoutDto> Items { get; set; } = [];
 }

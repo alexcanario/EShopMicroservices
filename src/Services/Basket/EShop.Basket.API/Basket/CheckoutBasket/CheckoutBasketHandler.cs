@@ -17,7 +17,17 @@ public class CheckoutBasketHandler(IBasketRepository basketRepository, IPublishE
 
         //TODO Validate the basket items and total price
         var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
+
+        eventMessage.Items = basket.Items.Select(item => new BasketItemsCheckoutEvent
+        {
+            ProductId = item.ProductId,
+            ProductName = item.ProductName,
+            Price = item.Price,
+            Quantity = item.Quantity
+        }).ToList();
+
         eventMessage.TotalPrice = basket.TotalPrice;
+        eventMessage.CardSecurityNumber = command.BasketCheckoutDto.CardSecurityNumber;
 
         await publishEndpoint.Publish(eventMessage, cancellationToken);
 
