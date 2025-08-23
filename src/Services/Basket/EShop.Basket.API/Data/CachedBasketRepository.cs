@@ -2,7 +2,7 @@
 
 public sealed class CachedBasketRepository(IBasketRepository basketRepository, IDistributedCache cache) : IBasketRepository
 {
-	public async Task<bool> DeleteBasketAsync(string userName, CancellationToken cancellationToken)
+    public async Task<bool> DeleteBasketAsync(string userName, CancellationToken cancellationToken)
 	{
 		await basketRepository.DeleteBasketAsync(userName, cancellationToken);
 		await cache.RemoveAsync(userName, cancellationToken);
