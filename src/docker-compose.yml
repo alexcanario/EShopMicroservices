@@ -14,23 +14,29 @@ services:
   messagebroker:
     image: rabbitmq:management
 
-  eshop.catalog.api:
+  catalog.api:
     image: ${DOCKER_REGISTRY-}eshopcatalogapi
     build:
       context: .
       dockerfile: Services/Catalog/EShop.Catalog.Api/Dockerfile
 
-  eshop.basket.api:
+  basket.api:
     image: ${DOCKER_REGISTRY-}eshopbasketapi
     build:
       context: .
       dockerfile: Services/Basket/EShop.Basket.Api/Dockerfile
 
-  eshop.discount.grpc:
+  discount.grpc:
     image: ${DOCKER_REGISTRY-}eshopdiscountgrpc
     build:
       context: .
       dockerfile: Services/Discount/EShop.Discount.Grpc/Dockerfile
+
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}eshoporderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/EShop.Ordering.API/Dockerfile
 
 volumes:
   postgres_catalog:

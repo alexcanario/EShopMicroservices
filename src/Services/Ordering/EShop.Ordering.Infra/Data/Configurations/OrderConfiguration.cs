@@ -49,10 +49,12 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 			paymentBuilder.Property(p => p.PaymentMethod).HasMaxLength(50);
 		});
 
-		builder.Property(o => o.Status)
-			.HasDefaultValue(OrderStatus.Draft)
-			.HasMaxLength(50)
-			.HasConversion(s => s.ToString(), dbStatus => (OrderStatus)Enum.Parse(typeof(OrderStatus), dbStatus));
+        builder.Property(o => o.Status)
+            .HasDefaultValue(OrderStatus.Draft)
+            .HasMaxLength(50)
+            .HasConversion(s => s.ToString(),
+                dbStatus => (OrderStatus)Enum.Parse(typeof(OrderStatus), dbStatus))
+            .HasSentinel((OrderStatus)0);
 
 		builder.Property(o => o.TotalPrice).HasPrecision(18, 2);
 	}

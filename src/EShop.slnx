@@ -21,6 +21,10 @@
     <Project Path="Services/Ordering/EShop.Ordering.Domain/EShop.Ordering.Domain.csproj" />
     <Project Path="Services/Ordering/EShop.Ordering.Infra/EShop.Ordering.Infra.csproj" />
   </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="docker-compose-cmd.txt" />
+    <File Path="Services/Ordering/EShop.Ordering.API/dotnet-ef cmd.txt" />
+  </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>

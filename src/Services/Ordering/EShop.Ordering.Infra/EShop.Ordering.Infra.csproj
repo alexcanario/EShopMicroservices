@@ -29,4 +29,8 @@
     <ProjectReference Include="..\EShop.Ordering.App\EShop.Ordering.App.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database\" />
+  </ItemGroup>
+
 </Project>

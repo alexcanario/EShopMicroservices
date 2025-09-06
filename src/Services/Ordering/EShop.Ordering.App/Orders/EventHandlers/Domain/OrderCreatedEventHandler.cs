@@ -9,7 +9,7 @@ public class OrderCreatedEventHandler(IPublishEndpoint publishEndpoint, ILogger<
     {
         logger.LogInformation("Domain event handled: {DomainEvent}", domainEvent.GetType().Name);
 
-        if (await featureManager.IsEnabledAsync("PublishIntegrationEvents", cancellationToken))
+        if (await featureManager.IsEnabledAsync("OrderFullFilment", cancellationToken))
         {
             var orderCreatedIntegrationEvent = domainEvent.Order.ToOrderDto();
 			
