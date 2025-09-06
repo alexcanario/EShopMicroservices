@@ -424,3 +424,4 @@ FodyWeavers.xsd
 .idea/.localHistory/
 # Rider shelf
 .idea/shelf/
+/src/.contextkeeper/.git-branches/feature-set-config-for-docker-orderApi.ck

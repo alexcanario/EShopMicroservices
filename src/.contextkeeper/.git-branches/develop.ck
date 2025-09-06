@@ -14,9 +14,9 @@
         {
           "Documents": [
             {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\Program.cs",
-              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\Program.cs",
-              "FullName": "Program.cs",
+              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\docker-compose.yml",
+              "RelativePath": "..\\..\\docker-compose.yml",
+              "FullName": "docker-compose.yml",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 200
@@ -25,30 +25,32 @@
                 "UnitType": "Stretch",
                 "Value": 210
               },
-              "Line": 1,
+              "Line": 35,
+              "Column": 22,
+              "IsPinned": true
+            },
+            {
+              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\docker-compose.override.yml",
+              "RelativePath": "..\\..\\docker-compose.override.yml",
+              "FullName": "docker-compose.override.yml",
+              "DockedHeight": {
+                "UnitType": "Stretch",
+                "Value": 200
+              },
+              "DockedWidth": {
+                "UnitType": "Stretch",
+                "Value": 210
+              },
+              "Line": 129,
               "Column": 1,
-              "IsPinned": true
+              "IsPinned": true,
+              "IsActive": true,
+              "IsSelected": true
             },
             {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\Models\\ShoppingCart.cs",
-              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\Models\\ShoppingCart.cs",
-              "FullName": "ShoppingCart.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 210
-              },
-              "Line": 5,
-              "Column": 21,
-              "IsPinned": true
-            },
-            {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\Basket\\StoreBasket\\StoreBasketCommandHandler.cs",
-              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\Basket\\StoreBasket\\StoreBasketCommandHandler.cs",
-              "FullName": "StoreBasketCommandHandler.cs",
+              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Ordering\\EShop.Ordering.App\\Orders\\EventHandlers\\Domain\\OrderCreatedEventHandler.cs",
+              "RelativePath": "..\\..\\Services\\Ordering\\EShop.Ordering.App\\Orders\\EventHandlers\\Domain\\OrderCreatedEventHandler.cs",
+              "FullName": "OrderCreatedEventHandler.cs",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 200
@@ -58,71 +60,11 @@
                 "Value": 210
               },
               "Line": 13,
-              "Column": 1,
-              "Bookmarks": [
-                13
-              ],
-              "IsPinned": true
-            },
-            {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Ordering\\EShop.Ordering.Domain\\ValueObjects\\CustomerId.cs",
-              "RelativePath": "..\\..\\Services\\Ordering\\EShop.Ordering.Domain\\ValueObjects\\CustomerId.cs",
-              "FullName": "CustomerId.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 210
-              },
-              "Line": 2,
-              "Column": 1,
-              "IsPinned": true
-            },
-            {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Ordering\\EShop.Ordering.App\\Orders\\Commands\\CreateOrder\\CreateOrderHandler.cs",
-              "RelativePath": "..\\..\\Services\\Ordering\\EShop.Ordering.App\\Orders\\Commands\\CreateOrder\\CreateOrderHandler.cs",
-              "FullName": "CreateOrderHandler.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 210
-              },
-              "Line": 21,
-              "Column": 96,
+              "Column": 10,
               "Breakpoints": [
                 {
                   "IsEnabled": true,
-                  "Line": 5,
-                  "Condition": "",
-                  "ConditionType": "WhenTrue"
-                }
-              ],
-              "IsPinned": false,
-              "IsSelected": true
-            },
-            {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\Data\\BasketRepository.cs",
-              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\Data\\BasketRepository.cs",
-              "FullName": "BasketRepository.cs",
-              "DockedHeight": {
-                "UnitType": "Stretch",
-                "Value": 200
-              },
-              "DockedWidth": {
-                "UnitType": "Stretch",
-                "Value": 210
-              },
-              "Line": 23,
-              "Column": 23,
-              "Breakpoints": [
-                {
-                  "IsEnabled": true,
-                  "Line": 14,
+                  "Line": 13,
                   "Condition": "",
                   "ConditionType": "WhenTrue"
                 }
@@ -130,9 +72,9 @@
               "IsPinned": false
             },
             {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\Data\\IBasketRepository.cs",
-              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\Data\\IBasketRepository.cs",
-              "FullName": "IBasketRepository.cs",
+              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Ordering\\EShop.Ordering.API\\appsettings.Development.json",
+              "RelativePath": "..\\..\\Services\\Ordering\\EShop.Ordering.API\\appsettings.Development.json",
+              "FullName": "appsettings.Development.json",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 200
@@ -141,14 +83,14 @@
                 "UnitType": "Stretch",
                 "Value": 210
               },
-              "Line": 5,
-              "Column": 33,
+              "Line": 6,
+              "Column": 32,
               "IsPinned": false
             },
             {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\Data\\CachedBasketRepository.cs",
-              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\Data\\CachedBasketRepository.cs",
-              "FullName": "CachedBasketRepository.cs",
+              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Ordering\\EShop.Ordering.API\\appsettings.json",
+              "RelativePath": "..\\..\\Services\\Ordering\\EShop.Ordering.API\\appsettings.json",
+              "FullName": "appsettings.json",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 200
@@ -157,22 +99,14 @@
                 "UnitType": "Stretch",
                 "Value": 210
               },
-              "Line": 25,
-              "Column": 5,
-              "Breakpoints": [
-                {
-                  "IsEnabled": false,
-                  "Line": 14,
-                  "Condition": "",
-                  "ConditionType": "WhenTrue"
-                }
-              ],
+              "Line": 12,
+              "Column": 18,
               "IsPinned": false
             },
             {
-              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Ordering\\EShop.Ordering.App\\Orders\\Commands\\CreateOrder\\CreateOrderCommand.cs",
-              "RelativePath": "..\\..\\Services\\Ordering\\EShop.Ordering.App\\Orders\\Commands\\CreateOrder\\CreateOrderCommand.cs",
-              "FullName": "CreateOrderCommand.cs",
+              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\appsettings.json",
+              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\appsettings.json",
+              "FullName": "appsettings.json",
               "DockedHeight": {
                 "UnitType": "Stretch",
                 "Value": 200
@@ -181,8 +115,24 @@
                 "UnitType": "Stretch",
                 "Value": 210
               },
-              "Line": 1,
-              "Column": 1,
+              "Line": 13,
+              "Column": 26,
+              "IsPinned": false
+            },
+            {
+              "FilePath": "D:\\code\\learning\\_mehmetOzkaya\\EShopMicroservices\\src\\Services\\Basket\\EShop.Basket.API\\appsettings.Development.json",
+              "RelativePath": "..\\..\\Services\\Basket\\EShop.Basket.API\\appsettings.Development.json",
+              "FullName": "appsettings.Development.json",
+              "DockedHeight": {
+                "UnitType": "Stretch",
+                "Value": 200
+              },
+              "DockedWidth": {
+                "UnitType": "Stretch",
+                "Value": 210
+              },
+              "Line": 14,
+              "Column": 7,
               "IsPinned": false
             }
           ],
@@ -196,7 +146,7 @@
           }
         }
       ],
-      "Orientation": "Vertical"
+      "Orientation": "Horizontal"
     }
   ]
 }
