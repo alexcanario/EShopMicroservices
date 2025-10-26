@@ -29,6 +29,7 @@
     <File Path="Services/Ordering/EShop.Ordering.API/dotnet-ef cmd.txt" />
   </Folder>
   <Project Path="docker-compose.dcproj">
+    <BuildDependency Project="ApiGateway/YarpApiGateway/YarpApiGateway.csproj" />
     <Build />
   </Project>
 </Solution>

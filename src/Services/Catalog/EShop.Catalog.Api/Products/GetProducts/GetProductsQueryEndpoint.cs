@@ -1,6 +1,6 @@
 ﻿namespace EShop.Catalog.Api.Products.GetProducts;
 
-public sealed record GetProductsRequest(int PageSize = 1, int PageNumber = 10);
+public sealed record GetProductsRequest(int? PageSize = null, int? PageNumber = null);
 public sealed record GetProductsResponse(IEnumerable<Product> Products);
 
 public sealed class GetProductsQueryEndpoint : ICarterModule

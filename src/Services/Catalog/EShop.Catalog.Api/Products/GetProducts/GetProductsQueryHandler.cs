@@ -1,6 +1,6 @@
 ﻿namespace EShop.Catalog.Api.Products.GetProducts;
 
-internal sealed record GetProductsQuery(int PageNumber = 1, int PageSize = 10) : IQuery<GetProductsResult>;
+internal sealed record GetProductsQuery(int? PageNumber = 1, int? PageSize = 5) : IQuery<GetProductsResult>;
 internal sealed record GetProductsResult(IEnumerable<Product> Products);
 
 internal sealed class GetProductsQueryHandler(IDocumentSession Session)
@@ -8,8 +8,18 @@ internal sealed class GetProductsQueryHandler(IDocumentSession Session)
 {
 	public async Task<GetProductsResult> Handle(GetProductsQuery query, CancellationToken cancellationToken)
 	{
-		var products = await Session.Query<Product>().ToPagedListAsync(query.PageNumber, query.PageSize, cancellationToken);
+		// Se PageNumber ou PageSize não forem fornecidos, retorna todos os produtos
+		IEnumerable<Product> products;
+		
+		if (query is { PageNumber: not null, PageSize: not null })
+		{
+			products = await Session.Query<Product>().ToPagedListAsync(query.PageNumber ?? 1, query.PageSize ?? 10, cancellationToken);
+		}
+		else
+		{
+			products = await Session.Query<Product>().ToListAsync(cancellationToken);
+		}
 
-		return new(products);
+		return new GetProductsResult(products);
 	}
 }

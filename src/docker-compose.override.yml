@@ -11,6 +11,11 @@ services:
       - 5432:5432
     volumes:
       - postgres_catalog:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   basketdb:
     container_name: basketdb
@@ -57,19 +62,27 @@ services:
 
   catalog.api:
     container_name: catalog.api
+    command: ["dotnet", "EShop.Catalog.Api.dll"]
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_URLS=http://+:8080;https://+:8081
+      # HTTPS cert wiring (export your dev cert and set HTTPS_CERT_PASSWORD env var or hardcode a password for local use)
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=${HTTPS_CERT_PASSWORD}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
       - ConnectionStrings__CatalogConnection=Server=catalogdb; Database=CatalogDb; Port=5432; User Id=postgres; Password=postgres; Include Error Detail=true
     depends_on:
-      - catalogdb
+      catalogdb:
+        condition: service_healthy
     ports:
       - 6000:8080
       - 6060:8081
     volumes:
+      # User secrets (Windows)
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      # Mount HTTPS dev cert folder and reference /https/aspnetapp.pfx above
+      - ${APPDATA}/ASP.NET/Https:/https:ro
 
   basket.api:
     container_name: basket.api
