@@ -1,6 +1,10 @@
-﻿namespace EShop.Catalog.Api.Products.GetProducts;
+﻿using Microsoft.AspNetCore.Mvc;
 
-public sealed record GetProductsRequest(int? PageSize = null, int? PageNumber = null);
+namespace EShop.Catalog.Api.Products.GetProducts;
+
+public sealed record GetProductsRequest(
+    [property: FromQuery(Name = "pagenumber")] int? PageNumber = null, 
+    [property: FromQuery(Name = "pagesize")] int? PageSize = null);
 public sealed record GetProductsResponse(IEnumerable<Product> Products);
 
 public sealed class GetProductsQueryEndpoint : ICarterModule
