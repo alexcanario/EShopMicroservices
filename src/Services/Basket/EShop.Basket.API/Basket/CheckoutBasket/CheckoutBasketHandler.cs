@@ -23,11 +23,12 @@ public class CheckoutBasketHandler(IBasketRepository basketRepository, IPublishE
             ProductId = item.ProductId,
             ProductName = item.ProductName,
             Price = item.Price,
-            Quantity = item.Quantity
+            Quantity = item.Quantity,
         }).ToList();
 
         eventMessage.TotalPrice = basket.TotalPrice;
         eventMessage.CardSecurityNumber = command.BasketCheckoutDto.CardSecurityNumber;
+        eventMessage.CardExpiration = command.BasketCheckoutDto.CardExpiration;
 
         await publishEndpoint.Publish(eventMessage, cancellationToken);
 
